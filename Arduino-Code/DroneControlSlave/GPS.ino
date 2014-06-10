@@ -1,4 +1,3 @@
-
 void getGPS() {
   while (Serial.available()) {
     gps.encode(Serial.read());
@@ -8,16 +7,17 @@ void getGPS() {
 void GPS_Init() {
 
   Serial.begin(9600);
+      
+  // Must set the higher baud rate before update rate
+  Serial.write("$PMTK251,57600*2C"); // Set 57600 baud rate 
+  Serial.write(0x0D); // CR
+  Serial.write(0x0A); // NL
 
-  Serial.write("$PMTK251,57600*2C"); // Must set the higher baud rate before update rate
-  Serial.write(0x0D);  // CR
-  Serial.write(0x0A);  // NL
+  Serial.begin(57600);  // Change to new 57600 baud rate
+  
+  delay(10); //Settle time
 
-  Serial.begin(57600);
-  delay(10); 
-
-  Serial.write("$PMTK220,100*2F");
-  Serial.write(0x0D);  // CR
-  Serial.write(0x0A);  // NL
-
+  Serial.write("$PMTK220,100*2F"); // Set 10Hz update rate
+  Serial.write(0x0D); // CR
+  Serial.write(0x0A); // NL
 }
