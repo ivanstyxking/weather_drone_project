@@ -1,4 +1,4 @@
-void clock(){ //yolo
+void clock(){ //pushMatrix/popMatrix are AMAZING
   stroke(75,192,0);
   noFill();
   ellipse(586,100,100,100);

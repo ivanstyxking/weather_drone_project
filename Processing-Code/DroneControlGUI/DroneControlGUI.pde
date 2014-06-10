@@ -33,8 +33,8 @@ void draw(){
   heading = -1*int(0.1*angle);
   displaymap(tempx,tempy);
   edges(); //display objects only in map region
-  lockGPS(false);
-  gauge(1,255,1,"var1");
+  lockGPS(false); //the argument here will have to communicate with the arduino code
+  gauge(1,255,1,"var1"); //guage args : [int shift, float value, float scaler, String name]
   gauge(2,133,1,"var2");
   gauge(3,50,1,"var3");
   gauge(4,270,1,"var4");
@@ -44,16 +44,12 @@ void draw(){
   console_out();
   orbit(0.1*angle);
   
-  button(530,270,"map sync",1);
+  button(530,270,"map sync",1); //GUI buttons :: [position x, position y, name, case procedure]
   button(635,270,"alt sync",2);
   button(635,240,"home",3);
   button(530,240,"info",4);
   clock();
   angle++;
-  if(mouseOver){
-    cursor(HAND);
-  }else{
-  }
 }
 void orbit(float angle){ //temporary code - simulates the glider positions
   angle=radians(angle);

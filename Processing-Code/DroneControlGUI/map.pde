@@ -1,4 +1,5 @@
-void edges() {
+//map stuff
+void edges() { //add opaque borders around map
   noStroke();
   fill(0);
   rect(0, 18, 10, 501);
@@ -8,22 +9,22 @@ void edges() {
   stroke(100, 255, 0);
   fill(100, 255, 0);
 }
-void displaymap(float x, float y) {
-  rect(10, 18, 500, 500);
+void displaymap(float x, float y) { //main map procedure
+  rect(10, 18, 500, 500); //initial border
   textFont(font1, 12);
   fill(100, 255, 0);
   noFill();
   pushMatrix();
-  translate(-1*syncX, -1*syncY);
-  wayPoint();
-  translate(260, 268);
-  displayWaypoints();
-  targetwaypoint(targetWP);
-  translate(syncX, syncY);
-  grid();
+    translate(-1*syncX, -1*syncY); //translate all events to the current sync position
+    wayPoint(); //drag circle
+    translate(260, 268);
+    displayWaypoints(); //self explanatory
+    targetwaypoint(targetWP); //display the target information
+    translate(syncX, syncY);
+    grid();
   popMatrix();
   pushMatrix();
-  positioning(x, y);
+    positioning(x, y);
   popMatrix();
 }
 void grid() {

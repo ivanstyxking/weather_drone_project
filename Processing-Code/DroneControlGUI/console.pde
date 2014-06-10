@@ -1,4 +1,4 @@
-void console_out(){
+void console_out(){ //I'll work on this later...
   rectMode(CORNER);
   textFont(font1,12);
   fill(100,255,0);
