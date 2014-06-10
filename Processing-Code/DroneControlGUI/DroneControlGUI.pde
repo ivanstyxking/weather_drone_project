@@ -74,11 +74,12 @@ void draw() {
   displaymap(tempx, tempy);
   edges(); //display objects only in map region
   lockGPS(false); //the argument here will have to communicate with the arduino code
-  gauge(1, 255, 1, "var1"); //guage args : [int shift, float value, float scaler, String name]
-  gauge(2, 133, 1, "var2");
-  gauge(3, 50, 1, "var3");
-  gauge(4, 270, 1, "var4");
-  gauge(5, 100, 1, "var5");
+  gauge(1, ailerons, 1.56, "ailrs"); //guage args : [int shift, float value, float scaler, String name]
+  gauge(2, ailerons2, 1.56, "ailrs2");
+  gauge(3, elevator, 1.56, "elev");
+  gauge(4, throttle, 1.56, "throt");
+  gauge(5, rudder, 1.56, "rud");
+  gauge(6,gear,1.56,"gear");
   navball();
   scaling_button();
   console_out();
