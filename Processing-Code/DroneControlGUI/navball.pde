@@ -7,7 +7,7 @@ void navball() {
   speedo();
   lines();
   compass(heading,120,0,"GPS");
-  compass(heading2,-120,0,"magnetic");
+  compass(heading2,-120,0,"Magnetic");
   yvar = 5*(orientation[0]);
   rotation = 3*(orientation[1]);
   pushMatrix();
