@@ -19,8 +19,8 @@ boolean release, mouseOver, info;
 int ymouse, xmouse;
 
 float yval, xval, x, y, yvar, rotation, gX, gY, pX, pY, altSync, homeX, homeY;
-float[] waypointX = new float[1000];
-float[] waypointY = new float[1000];
+float[] waypointX = new float[64];
+float[] waypointY = new float[64];
 
 int waypointcount = 0;
 

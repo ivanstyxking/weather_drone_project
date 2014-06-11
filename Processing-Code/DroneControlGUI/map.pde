@@ -78,6 +78,9 @@ void mouseReleased() {
   release = true;
   if ((mouseX>10)&&(mouseX<510)&&(mouseY>18)&&(mouseY<518)) {
     waypointcount++;
+    if(waypointcount>64){
+      waypointcount=64;
+    }
     ymouse = int((mouseY+syncY));
     xmouse = int((mouseX+syncX));
     yval = (-1*(268+-1*ymouse));
