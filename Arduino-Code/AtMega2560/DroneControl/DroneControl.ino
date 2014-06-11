@@ -121,44 +121,44 @@ byte gyro_sat=0;
 
 float DCM_Matrix[3][3]= {
   {
-    1,0,0          }
+    1,0,0              }
   ,{
-    0,1,0          }
+    0,1,0              }
   ,{
-    0,0,1          }
+    0,0,1              }
 }; 
 float Update_Matrix[3][3]={
   {
-    0,1,2        }
+    0,1,2            }
   ,{
-    3,4,5        }
+    3,4,5            }
   ,{
-    6,7,8        }
+    6,7,8            }
 }; //Gyros here
 
 
 float Temporary_Matrix[3][3]={
   {
-    0,0,0          }
+    0,0,0              }
   ,{
-    0,0,0          }
+    0,0,0              }
   ,{
-    0,0,0          }
+    0,0,0              }
 };
 
+char incomingChar;
+String incomingString;
+String outgoingString;
 
-String wireString;
+char charRoll[7];
+char charPitch[7];
+char charYaw[8];
 
-char charRoll[5];
-char charYaw[5];
-char charPitch[5];
+int commaPosition;
+int messageNum;
 
-char charLat[10];
-char charLong[10];
-char charSpeed[5];
-char charAlti[5];
-int sats;
-
+String messages[5]; // Incoming messages
+int servoPos[5]; // Positions of the servos
 
 unsigned long timeoutStart = 0;
 unsigned long timeoutCurrent = 0;
@@ -169,6 +169,7 @@ TinyGPSPlus gps;
 
 void setup()
 { 
+  Serial.begin(115200);
   I2C_Init();
 
   delay(500);
@@ -206,6 +207,7 @@ void loop() { //Main Loop
 
     if((millis()-timer)>=20)  // Main loop runs at 50Hz
   {
+    getGPS();  // GPS can be collected here because it has a 10Hz update rate
     counter++;
     timer_old = timer;
     timer=millis();
@@ -231,13 +233,19 @@ void loop() { //Main Loop
     Normalize();
     Drift_correction();
     Euler_angles();
+
+
     // ***  
-    
   }
-  
-  getGPS();
+
+  serialCheck();
+  dtostrf(ToDeg(roll),3,2,charRoll);
+  dtostrf(ToDeg(pitch),3,2,charPitch);
+  dtostrf(ToDeg(yaw),3,2,charYaw);
 
 }
+
+
 
 
 

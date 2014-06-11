@@ -1,4 +1,3 @@
-
 #include <L3G.h>
 #include <LSM303.h>
 

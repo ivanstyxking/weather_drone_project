@@ -7,8 +7,8 @@ void navball() {
   speedo();
   lines();
   compass(heading);
-  yvar = 0.5*(mouseY-height/2);
-  rotation = 0.2*(mouseX-width/2);
+  yvar = 5*(orientation[0]);
+  rotation = 3*(orientation[1]);
   pushMatrix();
   translate(originX, originY);
   rotate(radians(rotation));

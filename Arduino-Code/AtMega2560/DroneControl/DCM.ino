@@ -1,4 +1,3 @@
-
 void Normalize(void)
 {
   float error=0;

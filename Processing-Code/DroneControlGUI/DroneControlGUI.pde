@@ -35,6 +35,7 @@ float rudder = 90;
 float gear = 20;
 
 String[] messages = new String[10];
+float[] orientation = new float[3];
 int[] sensors = new int[15];
 int[] servoPos = new int[11];
 int[] checkNum = new int[11];
@@ -91,6 +92,8 @@ void draw() {
   button(530, 240, "info", 4);
   clock();
   angle++;
+  
+  serialRequest();
 }
 void orbit(float angle) { //temporary code - simulates the glider positions
   angle=radians(angle);

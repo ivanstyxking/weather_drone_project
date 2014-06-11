@@ -1,8 +1,7 @@
-
 void serialCheck() {
-  incomingChar = ' ';                                          //Clear all variables before start
-  incomingString = "";
   if (Serial.available() > 0) {                               //If a serial message is avaible run the while loop
+    incomingChar = ' ';                                          //Clear all variables before start
+    incomingString = "";
     while (incomingChar != '%') {                              //If the last character wasn't the end character then continue
       incomingChar = (char)Serial.read();
       incomingString += incomingChar;                          //Read and add the last revieved byte to the string
@@ -49,8 +48,9 @@ void msgDetect() {                                          // Detects what type
     sensorGet();
   }
   else if (messages[0] == "S") {
-    servoSort();
+    //servoSort();
   }
   else {
   }
 }
+

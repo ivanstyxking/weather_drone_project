@@ -30,9 +30,9 @@ void serialRequest() {
 
   println("Check number is: " + checkNum[0]);
 
-  serialPort.write("R," + checkNum[0] + ",%");
+  serialPort.write("R,1," + checkNum[0] + ",%");
 
-  println("Sent message is: " + "R," + checkNum[0] + ",%");
+  println("Sent message is: " + "R,1," + checkNum[0] + ",%");
 
 
   incomingChar = ' ';                                             //Clear all variables before start
@@ -79,12 +79,14 @@ void splitString() {
 void sensorSort() {
 
   boolean test = mesLagCheck();
-  println("Lag check num: " + messages[3]);
+  println("Lag check num: " + messages[4]);
   println("Result of lag check: " + test);
   
   
   if (messages[0].equals("S") && test) {
-    sensors[int(messages[1])]=int(messages[2]);
+    orientation[0]=float(messages[1]);
+    orientation[1]=float(messages[2]);
+    orientation[2]=float(messages[3]);
   }
   else {
     // Error if an incorrect string is recieved
@@ -110,39 +112,39 @@ void checkNumInc() {
 }
 
 boolean mesLagCheck() {
-  if (int(messages[3]) == /*checkNum[0*/ 500) {          // Lag / serial buffer check
+  if (int(messages[4]) == checkNum[0]) {          // Lag / serial buffer check
   println("Message latency: 0");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[1]))) {       
+  else if (messages[4].equals(str(checkNum[1]))) {       
   println("Message latency: 1");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[2]))) {       
+  else if (messages[4].equals(str(checkNum[2]))) {       
   println("Message latency: 2");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[3]))) {       
+  else if (messages[4].equals(str(checkNum[3]))) {       
   println("Message latency: 3");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[4]))) {       
+  else if (messages[4].equals(str(checkNum[4]))) {       
   println("Message latency: 4");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[5]))) {       
+  else if (messages[4].equals(str(checkNum[5]))) {       
   println("Message latency: 5");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[6]))) {       
+  else if (messages[4].equals(str(checkNum[6]))) {       
   println("Message latency: 6");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[7]))) {       
+  else if (messages[4].equals(str(checkNum[7]))) {       
   println("Message latency: 7");
   return true;
   }
-  else if (messages[3].equals(str(checkNum[8]))) {       
+  else if (messages[4].equals(str(checkNum[8]))) {       
   println("Message latency: 8");
   return true;
   }
