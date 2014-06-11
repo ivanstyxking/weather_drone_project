@@ -234,18 +234,6 @@ void loop() { //Main Loop
     // ***  
     
   }
-
-  dtostrf(ToDeg(roll),3,2,charRoll); //Converts double to charArray
-  dtostrf(ToDeg(yaw),3,2,charYaw);
-  dtostrf(ToDeg(pitch),2,2,charPitch);
-  
-  dtostrf(gps.location.lat(),2,6,charLat);
-  dtostrf(gps.location.lng(),2,6,charLong);
-  
-  dtostrf(gps.speed.mph(),3,1,charSpeed);
-  dtostrf(gps.altitude.meters(),4,1,charAlti);
-  
-  sats = gps.satellites.value();
   
   getGPS();
 

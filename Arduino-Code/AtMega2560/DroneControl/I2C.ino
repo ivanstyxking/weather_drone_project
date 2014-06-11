@@ -7,9 +7,7 @@ LSM303 compass;
 
 void I2C_Init()
 {
-  Wire.begin(2);
-  Wire.onRequest(requestEvent);
-  Wire.onReceive(recieveEvent);
+  Wire.begin();
 }
 
 void Gyro_Init()
@@ -74,55 +72,4 @@ void Read_Compass()
   magnetom_y = SENSOR_SIGN[7] * compass.m.y;
   magnetom_z = SENSOR_SIGN[8] * compass.m.z;
 }
-
-void requestEvent() {
-
-  char buffer[32];
-  switch (wireString.toInt()) {
-  case 0:
-    Wire.write(charRoll);
-    break;
-  case 1:
-    Wire.write(charYaw);
-    break;
-  case 2:
-    Wire.write(charPitch);
-    break;
-  case 3:
-    Wire.write(charLat);
-    break;
-  case 4:
-    Wire.write(charLong);
-    break;
-  case 5:
-    Wire.write(charSpeed);
-    break;
-  case 6:
-    Wire.write(charAlti);
-    break;
-  case 7:
-    //sats.toCharArray(buffer, 32);
-    Wire.write(sats);
-    break;
-  default:
-    wireString = "UnKnown" + wireString;
-    wireString.toCharArray(buffer, 32);
-    Wire.write(buffer);
-  }                   
-}
-
-void recieveEvent(int howMany) {
-
-  wireString = "";
-
-  while(Wire.available()) {    
-    char c = Wire.read();
-    wireString += c;
-  }
-}
-
-
-
-
-
 
