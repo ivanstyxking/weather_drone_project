@@ -36,7 +36,6 @@ float gear = 20;
 
 String[] messages = new String[10];
 float[] orientation = new float[3];
-int[] sensors = new int[15];
 int[] servoPos = new int[11];
 int[] checkNum = new int[11];
 

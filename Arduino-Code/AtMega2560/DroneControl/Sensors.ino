@@ -5,7 +5,7 @@ void sensorGet() {
         + String(charRoll) + ","
         + String(charPitch) + ","
         + String(charYaw) + "," 
-        + messages[2] + ",%";
+        + messages[2] + ",%";        
     Serial.print(buffer);
   }
   else if (messages[2] == "2"){

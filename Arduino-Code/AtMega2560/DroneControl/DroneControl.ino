@@ -121,29 +121,29 @@ byte gyro_sat=0;
 
 float DCM_Matrix[3][3]= {
   {
-    1,0,0              }
+    1,0,0                }
   ,{
-    0,1,0              }
+    0,1,0                }
   ,{
-    0,0,1              }
+    0,0,1                }
 }; 
 float Update_Matrix[3][3]={
   {
-    0,1,2            }
+    0,1,2              }
   ,{
-    3,4,5            }
+    3,4,5              }
   ,{
-    6,7,8            }
+    6,7,8              }
 }; //Gyros here
 
 
 float Temporary_Matrix[3][3]={
   {
-    0,0,0              }
+    0,0,0                }
   ,{
-    0,0,0              }
+    0,0,0                }
   ,{
-    0,0,0              }
+    0,0,0                }
 };
 
 char incomingChar;
@@ -246,6 +246,7 @@ void loop() { //Main Loop
   dtostrf(ToDeg(yaw),3,2,charYaw);
 
 }
+
 
 
 
