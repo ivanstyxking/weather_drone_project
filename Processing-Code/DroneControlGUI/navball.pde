@@ -6,7 +6,8 @@ void navball() {
   altimeter(alt-altSync);
   speedo();
   lines();
-  compass(heading);
+  compass(heading,120,0,"GPS");
+  compass(heading2,-120,0,"magnetic");
   yvar = 5*(orientation[0]);
   rotation = 3*(orientation[1]);
   pushMatrix();
@@ -54,7 +55,10 @@ void speedo() {
   rect(originX-190, originY, 50, 20);
   text(round(airspeed), originX-190, originY+5);
 }
-void compass(int bearing) {
+void compass(int bearing, int compx,int compy, String type) {
+  pushMatrix();
+  translate(compx,compy);
+  text(type,originX,originY+150);
   pushMatrix();
   translate(originX, originY+220);
   stroke(255, 0, 0, 200);
@@ -101,6 +105,7 @@ void compass(int bearing) {
   popMatrix();
   fill(100, 255, 0, 150);
   stroke(100, 255, 0, 255);
+  popMatrix();
 }
 void compassgrid(float angle){
   pushMatrix();

@@ -10,7 +10,7 @@ PFont font1;
 float airspeed = 30;
 float alt = 3301;
 
-int heading, targetValue;
+int heading, targetValue,heading2; 
 int targetWP = 2;
 
 boolean sending, recieving;
@@ -54,6 +54,7 @@ int posInArr;
 Serial serialPort;
 
 void setup() {
+  heading2 = 0; //temporary
 
   String portName = Serial.list()[0];
   serialPort = new Serial(this, portName, 115200);
