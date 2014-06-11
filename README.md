@@ -1,4 +1,4 @@
 weather_drone_project
 =====================
 
-Adrian is a horse
+Same is a horse
