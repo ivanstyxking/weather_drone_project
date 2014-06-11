@@ -1,4 +1,4 @@
 weather_drone_project
 =====================
 
-Same is a horse
+Sam is a horse
