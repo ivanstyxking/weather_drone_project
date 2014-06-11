@@ -94,6 +94,9 @@ void draw() {
   angle++;
   
   serialRequest();
+  sendSerial();
+  
+  throttle = mouseY;
 }
 void orbit(float angle) { //temporary code - simulates the glider positions
   angle=radians(angle);

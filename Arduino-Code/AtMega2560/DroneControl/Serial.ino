@@ -48,7 +48,7 @@ void msgDetect() {                                          // Detects what type
     sensorGet();
   }
   else if (messages[0] == "S") {
-    //servoSort();
+    servoSort();
   }
   else {
   }

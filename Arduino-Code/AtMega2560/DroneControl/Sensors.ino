@@ -15,3 +15,14 @@ void sensorGet() {
   }
 }
 
+void servoSort() {
+  servo1.write(messages[1].toInt());
+}
+
+void Servo_Init(){
+  
+  servo1.attach(51);
+  
+  servo1.write(90);
+  
+}

@@ -28,7 +28,7 @@ int SENSOR_SIGN[9] = {
 
 #include <Wire.h>
 #include <TinyGPS++.h>
-
+#include <Servo.h>
 
 // LSM303 accelerometer: 8 g sensitivity
 // 3.9 mg/digit; 1 g = 256
@@ -166,6 +166,7 @@ unsigned long timeoutCurrent = 0;
 boolean serialLoop = false;
 
 TinyGPSPlus gps;
+Servo servo1;
 
 void setup()
 { 
@@ -178,6 +179,7 @@ void setup()
   Compass_Init();
   Gyro_Init();
   GPS_Init();
+  Servo_Init();
 
   delay(20);
 
