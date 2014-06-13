@@ -4,11 +4,13 @@ weather_drone_project
 Adrina is mostly a horse
 
 
-Need completion
+Need completion!
 ================
 
 1)  Serial networking code
+
 2)  Servo implementation
+
 3)  One wire and servo tests
 4)  Atmega328p wire to serial programming
 5)  Compass code correction
