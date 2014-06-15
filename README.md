@@ -45,9 +45,9 @@ Need completion!
 
 19) Way point boundarys
 
-20) ~~Order AtMega328-P socket~~
+20) **~~Order AtMega328-P socket~~**
 
-21) ~~Ordering pin headers~~
+21) *~~Ordering pin headers~~*
 
 22) Serial interupt reset feature for stuck code
 
