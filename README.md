@@ -58,3 +58,5 @@ Need completion!
 25) **~~Order board connectors~~**
 
 26) Order battery voltage monitor
+
+27) Create antenna
