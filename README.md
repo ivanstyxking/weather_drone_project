@@ -55,6 +55,6 @@ Need completion!
 
 24) Implement GPS to GUI
 
-25) ~~Order board connectors~~
+25) **~~Order board connectors~~**
 
 26) Order battery voltage monitor
