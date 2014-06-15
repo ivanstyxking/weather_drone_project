@@ -15,48 +15,54 @@ Need completion!
 
 4)  Atmega328p wire to serial programming
 
-5)  Compass code correction
+5)  Pictures and documentation
 
-6)  Pictures and documentation
+6)  Research documentation
 
-7)  Research documentation
+7)  Circuit board design
 
-8)  Circuit board design
+8)  Circuit board manufacture
 
-9)  Circuit board manufacture
+9) Circuit board soldering / testing
 
-10) Circuit board soldering / testing
+10) Motor mounting
 
-11) Motor mounting
+11) Battery bay designing and building
 
-12) Battery bay designing and building
+12) Barometric pressure sensor implementation
 
-13) Baromic pressure sensor implementation
+13) **~~Temperature sensor implementation~~**
+14) **~~Humidity sensor implementation~~**
 
-14) **~~Tempreture sensor implementation~~**
+15) Test flight
 
-15) **~~Humidity sensor implementation~~**
+16) Autopilot altitude lock
 
-16) Sensor logging to file
+17) **~~Order AtMega328-P socket~~**
 
-17) Test flight
+18) **~~Ordering pin headers~~**
 
-18) Autopilot alititude lock
+19) Serial interrupt reset feature for stuck code
 
-19) Way point boundarys
+20) Allow the arduino to be reset and pick up serial stream again
 
-20) **~~Order AtMega328-P socket~~**
+21) Implement GPS to GUI
 
-21) **~~Ordering pin headers~~**
+22) **~~Order board connectors~~**
 
-22) Serial interupt reset feature for stuck code
+23) Order battery voltage monitor
 
-23) Allow the arduino to be reset and pick up serial stream again
+24) Create antenna
 
-24) Implement GPS to GUI
+Need completion! (GUI)
+=======================
 
-25) **~~Order board connectors~~**
+1) Sensor logging to file
 
-26) Order battery voltage monitor
+2)  Compass code correction
 
-27) Create antenna
+3) Way point boundaries
+
+4) GUI temperature sensors display
+
+5) Barometric pressure sensor display
