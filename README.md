@@ -11,7 +11,7 @@ Need completion!
 
 2)  Servo implementation
 
-3)  One wire and servo tests
+3)  **~~One wire and servo tests (Does not work)~~**
 
 4)  Atmega328p wire to serial programming
 
@@ -33,9 +33,9 @@ Need completion!
 
 13) Baromic pressure sensor implementation
 
-14) Tempreture sensor implementation
+14) **~~Tempreture sensor implementation~~**
 
-15) Humidity sensor implementation
+15) **~~Humidity sensor implementation~~**
 
 16) Sensor logging to file
 
@@ -47,7 +47,7 @@ Need completion!
 
 20) **~~Order AtMega328-P socket~~**
 
-21) *~~Ordering pin headers~~*
+21) **~~Ordering pin headers~~**
 
 22) Serial interupt reset feature for stuck code
 
