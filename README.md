@@ -45,12 +45,16 @@ Need completion!
 
 19) Way point boundarys
 
-20) Ordering chip holder
+20) ~~Order AtMega328-P socket~~
 
-21) Ordering pin headers
+21) ~~Ordering pin headers~~
 
 22) Serial interupt reset feature for stuck code
 
 23) Allow the arduino to be reset and pick up serial stream again
 
 24) Implement GPS to GUI
+
+25) ~~Order board connectors~~
+
+26) Order battery voltage monitor
