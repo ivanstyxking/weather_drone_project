@@ -32,6 +32,7 @@ Need completion!
 12) Barometric pressure sensor implementation
 
 13) **~~Temperature sensor implementation~~**
+
 14) **~~Humidity sensor implementation~~**
 
 15) Test flight
@@ -68,3 +69,9 @@ Need completion! (GUI)
 4) GUI temperature sensors display
 
 5) Barometric pressure sensor display
+
+6) Info on map correction
+
+7) Zoomn buttons on map
+
+8) Console out coding
