@@ -75,3 +75,5 @@ Need completion! (GUI)
 7) Zoomn buttons on map
 
 8) Console out coding
+
+9) PLace to enter local sea level pressure for altitude calculations
