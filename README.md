@@ -55,7 +55,9 @@ Need completion!
 
 24) Create antenna
 
-25) attatch fireworks to drone and aim for the moon
+25) Add programming headers to all boards
+
+26) attatch fireworks to drone and aim for the moon
 
 Need completion! (GUI)
 =======================
