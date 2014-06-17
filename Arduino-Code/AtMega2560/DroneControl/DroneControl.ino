@@ -173,6 +173,7 @@ void setup()
   Serial.begin(115200);
   I2C_Init();
 
+  pinMode(11, INPUT);
   delay(500);
 
   Accel_Init();
@@ -244,7 +245,10 @@ void loop() { //Main Loop
   dtostrf(ToDeg(roll),3,2,charRoll);
   dtostrf(ToDeg(pitch),3,2,charPitch);
   dtostrf(ToDeg(yaw),3,2,charYaw);
-
+  
+  if (digitalRead(11)) {  // Line will be pulled high when a read is ready  
+    readSensorPreprocessor();
+  }
 }
 
 
