@@ -8,7 +8,7 @@ void sensorGet() {
       + messages[2] + ",%";        
     Serial.print(buffer);
   }
-  else if (messages[2] == "2"){  // Send GPS data
+  else if (messages[1] == "2"){  // Send GPS data
     float buffer1 = gps.location.lat(); 
     float buffer2 = gps.location.lng();
     float buffer3 = gps.speed.mps();
@@ -30,7 +30,7 @@ void sensorGet() {
     Serial.print(buffer6);
     Serial.print("," + messages[2] + ",%");   
   } 
-  else if (messages[2] == "3") {  // Send sensor data
+  else if (messages[1] == "3") {  // Send sensor data
 
   }
   else { // If message is unrecognised
@@ -50,6 +50,18 @@ void Servo_Init(){
 }
 
 void readSensorPreprocessor() {
-  
+  Wire.beginTransmission(2);
+  Wire.write(1);
+  Wire.endTransmission();
+
+  Wire.requestFrom(2,4);
+
+  while(Wire.available())    // slave may send less than requested
+  { 
+    char c = Wire.read(); // receive a byte as character
+    Serial.print(c);         // print the character
+  }
 }
+
+
 
