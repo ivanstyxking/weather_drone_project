@@ -92,3 +92,5 @@ Things in the post
 4)  2.4Ghz xBee radio
 
 5)  40 pin headers
+
+6) **~~5x AtMega382p DIP holder~~**
