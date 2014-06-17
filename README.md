@@ -68,7 +68,7 @@ Need completion! (GUI)
 
 3)  Way point boundaries
 
-4)  GUI temperature sensors display
+4)  **~~GUI temperature sensors display~~**
 
 5)  Barometric pressure sensor display
 
