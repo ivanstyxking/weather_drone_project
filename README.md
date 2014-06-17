@@ -79,3 +79,17 @@ Need completion! (GUI)
 8) Console out coding
 
 9) PLace to enter local sea level pressure for altitude calculations
+
+Things in the post
+===================
+
+1) AtMega1284p (New processor)
+
+2) 40pin DIP holder
+
+3) 4x 16Mhz crystal
+
+4) 2.4Ghz xBee radio
+
+
+
