@@ -23,7 +23,7 @@ Need completion!
 
 8)  Circuit board manufacture
 
-9) Circuit board soldering / testing
+9)  Circuit board soldering / testing
 
 10) Motor mounting
 
@@ -57,39 +57,38 @@ Need completion!
 
 25) Add programming headers to all boards
 
-26) attatch fireworks to drone and aim for the moon
+26) Attatch fireworks to drone and aim for the moon
 
 Need completion! (GUI)
 =======================
 
-1) Sensor logging to file
+1)  Sensor logging to file
 
 2)  Compass code correction
 
-3) Way point boundaries
+3)  Way point boundaries
 
-4) GUI temperature sensors display
+4)  GUI temperature sensors display
 
-5) Barometric pressure sensor display
+5)  Barometric pressure sensor display
 
-6) Info on map correction
+6)  Info on map correction
 
-7) Zoomn buttons on map
+7)  Zoomn buttons on map
 
-8) Console out coding
+8)  Console out coding
 
-9) PLace to enter local sea level pressure for altitude calculations
+9)  PLace to enter local sea level pressure for altitude calculations
 
 Things in the post
 ===================
 
-1) AtMega1284p (New processor)
+1)  AtMega1284p (New processor)
 
-2) 40pin DIP holder
+2)  40pin DIP holder
 
-3) 4x 16Mhz crystal
+3)  4x 16Mhz crystal
 
-4) 2.4Ghz xBee radio
+4)  2.4Ghz xBee radio
 
-
-
+5)  40 pin headers
