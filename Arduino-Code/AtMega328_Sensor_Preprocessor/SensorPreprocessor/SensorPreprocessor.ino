@@ -1,29 +1,24 @@
 #include <Wire.h>
 #include <DHT.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_BMP085_U.h>
 
 DHT dht(2, DHT22);  // Create DHT object
-Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);  // Create object for BMP085/BMP180
 
-float bmpPressure;
-float bmpTemperature;
-
-float seaLevelPressure;
-float bmpAltitude;
-
-float dhtHumidity;
-float dhtTemperatureC;
-float dhtTemperatureF;
+float humidity;
+float temperatureC;
+float temperatureF;
 
 float heatIndexF;
 float heatIndexC;
 
-boolean dhtReadFailed;
-boolean bmpReadFailed;
+boolean readFailed;
 
 int sensor;
 
+char buffer [5];
+
+long previousMillis = 0;
+long interval = 2000;      
 
 void setup() {
 
@@ -35,9 +30,6 @@ void setup() {
   Serial.begin(115200);
   delay(100);
 
-  if (!bmp.begin()) {  // Test to see if sensor initalized correctly
-  } 
-
   delay(100);  
 
   dht.begin(); 
@@ -46,33 +38,42 @@ void setup() {
 
 void loop() {
 
-  // 2 second loop
+  digitalWrite(9, HIGH);
 
-
+  unsigned long currentMillis = millis();
+  if(currentMillis - previousMillis > interval) {  // 2 second loop
+    digitalWrite(9, LOW);  // Prevent a i2c request
+    delay(10);
+    previousMillis = currentMillis;
+    getDHT();
+  }
 
 }
 
 void requestEvent() {
-  digitalWrite(9, LOW);
-  if (sensor == 1) {
-    //char buffer [5];
-    //dtostrf(dhtHumidity,2,2,buffer);
-    //Wire.write(buffer);
-    Wire.write("1234");
+  
+  if (sensor == 1) {  // Writes dhtHumidity
+    dtostrf(humidity,2,2,buffer);
+    Wire.write(buffer);
   }
-  else if (sensor == 2) {
-
+  else if (sensor == 2) {  // Writes dhtTemperature
+    dtostrf(temperatureC,2,2,buffer);
+    Wire.write(buffer);
   } 
+  else if (sensor == 3) {  // Writes heatIndex
+    dtostrf(heatIndexC,2,2,buffer);
+    Wire.write(buffer);
+  }
   else {
 
   }
 }
 
 void recieveEvent(int howMany) {
-
-  digitalWrite(13, HIGH);
   sensor = Wire.read();
 }
+
+
 
 
 
