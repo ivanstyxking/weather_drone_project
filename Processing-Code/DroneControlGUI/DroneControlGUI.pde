@@ -23,6 +23,9 @@ float[] waypointX = new float[64];
 float[] waypointY = new float[64];
 int[] sensors = new int[5];
 
+float bmpTemperature = 32;
+float dhtTemperature = 34;
+
 int waypointcount = 0;
 
 float tempx, tempy, syncX, syncY, scale, initX, initY;
@@ -82,6 +85,7 @@ void draw() {
   gauge(4, throttle, 1.56, "throt");
   gauge(5, rudder, 1.56, "rud");
   gauge(6,gear,1.56,"gear");
+  tempDisplay(bmpTemperature,dhtTemperature,685,200);
   navball();
   scaling_button();
   console_out();

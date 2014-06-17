@@ -1,7 +1,10 @@
 void navball() {
+  stroke(100,255,0);
   rect(756, 560, 454, 451);
   textFont(font1, 12);
+  fill(100,255,0);
   text("navball", width-450, height-475);
+  noFill();
   ellipse(originX, originY, diam, diam);
   altimeter(alt-altSync);
   speedo();
