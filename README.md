@@ -70,7 +70,7 @@ Need completion! (GUI)
 
 4)  **~~GUI temperature sensors display~~**
 
-5)  Barometric pressure sensor display
+5)  **~~Barometric pressure sensor display~~**
 
 6)  Info on map correction
 
