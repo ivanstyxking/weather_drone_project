@@ -167,13 +167,19 @@ unsigned long timeoutCurrent = 0;
 
 boolean serialLoop = false;
 
-double baselinePressure;
-double bmpAltitute;
+int launchAltitude = 133;  // Must be in feet
+double bmpAltitude;
 double bmpPressure;
 double bmpTemperature;
+double seaPressure;
+
+char stringPressure[8];
+char stringAltitude[8];
+char stringTemperature[6];
+
 int waitTime;  // Time to wait before requesting senor data
 int bmpStage = 0;
-unsigned long waitStart = 0;
+long waitStart = 0;
 
 TinyGPSPlus gps;
 SFE_BMP180 bmp180;
@@ -258,6 +264,9 @@ void loop() { //Main Loop
   dtostrf(ToDeg(roll),3,2,charRoll);
   dtostrf(ToDeg(pitch),3,2,charPitch);
   dtostrf(ToDeg(yaw),3,2,charYaw);
+  dtostrf(bmpPressure,5,2,stringPressure);
+  dtostrf(bmpTemperature,3,2,stringTemperature);
+  dtostrf(bmpAltitude,5,2,stringAltitude);
   
   if (digitalRead(11) == HIGH) {  // Line will be pulled high when a read is ready  
     readSensorPreprocessor();

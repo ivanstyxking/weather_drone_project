@@ -77,33 +77,22 @@ void BMP180_Init() {
 }
 
 void Read_BMP180() {
-
-  if (bmpStage == 0) {
-    waitTime = bmp180.startTemperature();  
-    bmpStage = 1;
-    waitStart = millis();
-  }
-  if (bmpStage == 1) {
-    if ((millis() - waitStart) >= waitTime  || waitTime == ' ') {
-      bmp180.getTemperature(bmpTemperature);
+  waitTime = bmp180.startTemperature();
+  if (waitTime != 0)  {
+    delay(waitTime);
+    waitTime = bmp180.getTemperature(bmpTemperature);
+    if (waitTime != 0) {
       waitTime = bmp180.startPressure(3);
-      waitStart = millis();
-      bmpStage = 2;
+      if (waitTime != 0) {
+        delay(waitTime);
+        waitTime = bmp180.getPressure(bmpPressure,bmpTemperature);
+        if (waitTime != 0) {
+          seaPressure = bmp180.sealevel(bmpPressure,launchAltitude);
+          bmpAltitude = bmp180.altitude(bmpPressure,seaPressure);
+        }
+      }
     }
-  }
-  if (bmpStage == 2) {
-    if ((millis() - waitStart) >= waitTime || waitTime == ' ') {
-      bmp180.getPressure(bmpPressure, bmpTemperature);
-      bmpStage = 3;
-      waitTime = 2000;
-      waitStart = millis();
-    }
-  }
-  if (bmpStage == 3) {
-    if ((millis() - waitStart) >= waitTime) {
-      bmpStage = 0;
-    }
-  }
+  }  
 }
 
 

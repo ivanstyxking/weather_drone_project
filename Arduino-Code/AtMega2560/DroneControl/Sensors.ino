@@ -34,7 +34,10 @@ void sensorGet() {
     Serial.print("S,3," 
           + dht22[1] + "," 
           + dht22[2] + ","
-          + dht22[3] + "," 
+          + dht22[3] + ","
+          + stringPressure + ","
+          + stringTemperature + ","
+          + stringAltitude + "," 
           + messages[2] + ",%");
 
   }
