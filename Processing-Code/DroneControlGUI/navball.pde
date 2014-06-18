@@ -1,6 +1,6 @@
 void navball() {
   stroke(100,255,0);
-  rect(756, 560, 454, 451);
+  rect(756, 495, 454, 383);
   textFont(font1, 12);
   fill(100,255,0);
   text("navball", width-450, height-475);
@@ -9,8 +9,8 @@ void navball() {
   altimeter(alt-altSync);
   speedo();
   lines();
-  compass(heading,163,-85,"GPS");
-  compass(heading2,-163,-85,"Magnetic");
+  compass(heading,165,-80,"GPS");
+  compass(heading2,-165,-80,"Magnetic");
   yvar = 5*(orientation[0]);
   rotation = 2*(orientation[1]);
   pushMatrix();
@@ -119,5 +119,4 @@ void compassgrid(float angle){
   line(-50, 0, -40, 0);
   popMatrix();
 }
-
 
