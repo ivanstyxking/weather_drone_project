@@ -10,16 +10,16 @@ void gauge(int shift,float value, float scale, String name){
   noFill();
   rectMode(CENTER);
   float xpos = width-40*shift;
-  rect(xpos,140,20,280);
+  rect(xpos,145,20,260);
   strokeWeight(10);
-  line(xpos,275,xpos,275-value*scale);
+  line(xpos,270,xpos,270-value*scale);
   textFont(font1,12);
   fill(100,255,0);
   textAlign(CENTER);
   text("data gauges",width-425, 30);
   text(name,xpos,295); //display gauge names
   textFont(font1,10);
-  text(int(value),xpos,280-value*scale-15); //display gauge value
+  text(int(value),xpos,277-value*scale-15); //display gauge value
   noFill();
   strokeWeight(1);
 }
