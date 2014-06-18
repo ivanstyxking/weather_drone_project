@@ -86,7 +86,7 @@ void draw() {
   gauge(5, rudder, 1.56, "rud");
   gauge(6,gear,1.56,"gear");
   tempDisplay(bmpTemperature,dhtTemperature,685,200);
-  barometer(1013,570,420,500,1100);
+  barometer(1013,570,420,990,1030);
   navball();
   scaling_button();
   console_out();
