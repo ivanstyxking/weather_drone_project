@@ -171,8 +171,8 @@ double baselinePressure;
 double bmpAltitute;
 double bmpPressure;
 double bmpTemperature;
-char waitTime;  // Time to wait before requesting senor data
-int waitOk = 0;
+int waitTime;  // Time to wait before requesting senor data
+int bmpStage = 0;
 unsigned long waitStart = 0;
 
 TinyGPSPlus gps;

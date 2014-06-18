@@ -74,27 +74,38 @@ void Read_Compass()
 
 void BMP180_Init() {
   bmp180.begin();
-  //baselinePressure = Read_BMP180();  // Can use delays...
 }
 
-void Read_BMP180() {  // Cant use delays
+void Read_BMP180() {
 
-  if (waitOk == 0) {
-    Serial.println("Requesting temperature");
-    waitTime = bmp180.startPressure(3);  
-    waitOk = 1;
+  if (bmpStage == 0) {
+    waitTime = bmp180.startTemperature();  
+    bmpStage = 1;
     waitStart = millis();
-    Serial.print("Wait time is: "); 
-    Serial.println(waitTime);
   }
-  if (waitOk == 1) {
-    if (millis() - waitStart >= waitTime  || waitTime == ' ') {
+  if (bmpStage == 1) {
+    if ((millis() - waitStart) >= waitTime  || waitTime == ' ') {
       bmp180.getTemperature(bmpTemperature);
-      Serial.print("Read temperature as: ");
-      Serial.println(bmpTemperature);
-      waitOk = 2;
+      waitTime = bmp180.startPressure(3);
+      waitStart = millis();
+      bmpStage = 2;
+    }
+  }
+  if (bmpStage == 2) {
+    if ((millis() - waitStart) >= waitTime || waitTime == ' ') {
+      bmp180.getPressure(bmpPressure, bmpTemperature);
+      bmpStage = 3;
+      waitTime = 2000;
+      waitStart = millis();
+    }
+  }
+  if (bmpStage == 3) {
+    if ((millis() - waitStart) >= waitTime) {
+      bmpStage = 0;
     }
   }
 }
+
+
 
 
