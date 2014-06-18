@@ -1,5 +1,5 @@
-void Compass_Heading()
-{
+void Compass_Heading() {
+  
   float MAG_X;
   float MAG_Y;
   float cos_roll;

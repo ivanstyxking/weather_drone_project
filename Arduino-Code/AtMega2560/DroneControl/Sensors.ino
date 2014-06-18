@@ -76,6 +76,3 @@ void readSensorPreprocessor() {
   }
 }
 
-
-
-

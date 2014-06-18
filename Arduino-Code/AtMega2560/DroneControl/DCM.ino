@@ -1,5 +1,5 @@
-void Normalize(void)
-{
+void Normalize(void) {
+  
   float error=0;
   float temporary[3][3];
   float renorm=0;

@@ -43,3 +43,4 @@ void tempDisplay(float temp1, float temp2, int X, int Y){
     ellipse(39,-5,5,5);
   popMatrix();
 }
+

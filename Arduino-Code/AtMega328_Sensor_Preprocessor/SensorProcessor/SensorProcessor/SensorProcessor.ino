@@ -55,4 +55,3 @@ void sendSensors() {
   Serial.print("Heat index: ");
   Serial.println(heatIndexC);
 }
-

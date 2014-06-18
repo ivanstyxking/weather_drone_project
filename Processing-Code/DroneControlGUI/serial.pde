@@ -1,7 +1,6 @@
 void recieveSerial() {
   serialRequest();
 
-
   print("Sensor 1: ");
   println(sensors[1]);
   print("Sensor 2: ");
