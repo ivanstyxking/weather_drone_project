@@ -10,9 +10,10 @@ void clock(){ //pushMatrix/popMatrix are AMAZING
   }
   pushMatrix();
   rotate(radians(second()*6+180)); //display seconds
-  stroke(100,255,0,150);
   strokeWeight(1);
+  stroke(255,100,0,180);
   line(0,0,0,50);
+   stroke(100,255,0,150);
   popMatrix();
   pushMatrix();
   rotate(radians(minute()*6+180)); //display minutes

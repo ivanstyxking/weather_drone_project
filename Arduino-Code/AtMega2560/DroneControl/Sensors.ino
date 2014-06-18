@@ -31,6 +31,11 @@ void sensorGet() {
     Serial.print("," + messages[2] + ",%");   
   } 
   else if (messages[1] == "3") {  // Send sensor data
+    Serial.print("S,3," 
+          + dht22[1] + "," 
+          + dht22[2] + ","
+          + dht22[3] + "," 
+          + messages[2] + ",%");
 
   }
   else { // If message is unrecognised
@@ -44,24 +49,33 @@ void servoSort() {
 void Servo_Init(){
 
   servo1.attach(24);
+  servo2.attach(25);
 
   servo1.write(90);
+  servo2.write(90);
+
 
 }
 
 void readSensorPreprocessor() {
-  Wire.beginTransmission(2);
-  Wire.write(1);
-  Wire.endTransmission();
+  int x = 1;
+  while (x < 4) {
+    Wire.beginTransmission(2);
+    Wire.write(x);
+    Wire.endTransmission();
 
-  Wire.requestFrom(2,4);
+    Wire.requestFrom(2,4);
 
-  while(Wire.available())    // slave may send less than requested
-  { 
-    char c = Wire.read(); // receive a byte as character
-    Serial.print(c);         // print the character
+    dht22[x] = "";
+    while(Wire.available()) {   // slave may send less than requested 
+      char c = Wire.read(); // receive a byte as character
+      dht22[x] += c;
+      
+    }
+    x += 1;
   }
 }
+
 
 
 

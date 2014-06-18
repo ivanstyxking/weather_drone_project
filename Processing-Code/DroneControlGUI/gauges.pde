@@ -16,3 +16,34 @@ void gauge(int shift,float value, float scale, String name){
   noFill();
   strokeWeight(1);
 }
+void barometer(float millibars,int X, int Y,float rangeStart,float rangeEnd){
+  if(millibars>rangeEnd){
+    millibars = rangeEnd;
+  }
+  if(millibars<rangeStart){
+    millibars=rangeStart;
+  }
+  pushMatrix();
+  translate(X,Y);
+  stroke(100,255,0);
+  stroke(255,100,0,100);
+  rect(0,-10,60,130);
+  rect(57,-55,50,40);
+  textFont(font1,12);
+  text("mB",57,-65);
+  textFont(font1,12);
+  text(nf(millibars,1,1),57,-50);
+  for(float i=rangeStart/10;i<=rangeEnd/10;i+=2){
+    if(i<=millibars/10){
+      stroke(255,100,0);
+    }else{
+    stroke(255,100,0,130);
+    }
+    line(-25,100-i*2+rangeStart/10,5,100-i*2+rangeStart/10);
+    textFont(font1,9);
+    if(i%10 == 0){
+    text(nf(i*10,1,0),17,103-i*2+rangeStart/10);
+    }
+  }
+  popMatrix();
+}

@@ -68,7 +68,7 @@ void setup() {
   syncX = 0;
   syncY = 0;
   scale = 1;
-  size(1000, 800);
+  size(1000, 700);
   stroke(100, 255, 0);
   font1 = createFont("Consolas", 14, true);
 }
@@ -86,6 +86,7 @@ void draw() {
   gauge(5, rudder, 1.56, "rud");
   gauge(6,gear,1.56,"gear");
   tempDisplay(bmpTemperature,dhtTemperature,685,200);
+  barometer(1013,570,420,500,1100);
   navball();
   scaling_button();
   console_out();

@@ -2,7 +2,7 @@
 #include <DHT.h>
 #include <Adafruit_Sensor.h>
 
-DHT dht(2, DHT22);  // Create DHT object
+DHT dht(12, DHT22);  // Create DHT object
 
 float humidity;
 float temperatureC;
@@ -38,7 +38,7 @@ void setup() {
 
 void loop() {
 
-  digitalWrite(9, HIGH);
+  
 
   unsigned long currentMillis = millis();
   if(currentMillis - previousMillis > interval) {  // 2 second loop
@@ -46,6 +46,7 @@ void loop() {
     delay(10);
     previousMillis = currentMillis;
     getDHT();
+    digitalWrite(9, HIGH);
   }
 
 }
@@ -70,6 +71,7 @@ void requestEvent() {
 }
 
 void recieveEvent(int howMany) {
+  digitalWrite(9,LOW);
   sensor = Wire.read();
 }
 

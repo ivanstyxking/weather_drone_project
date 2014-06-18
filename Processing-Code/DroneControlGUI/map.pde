@@ -157,7 +157,9 @@ void targetwaypoint(int target) {
     textFont(font1, 12);
     text(int(distance_to_target ), (gX+targX)/2, (gY+targY)/2);
     text(int(distance_to_prev ), (gX+pX)/2, (gY+pY)/2);
+    if(target>0){
     text(int(round(d)), (2*gX+Xintercept)/2, (2*gY+Yintercept)/2);
+    }
     fill(255,0,0);
     text(int(round(sqrt(sq(gX-homeX)+sq(gY-homeY)))),(gX+homeX)/2,(gY+homeY)/2);
     strokeWeight(1);

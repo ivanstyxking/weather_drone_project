@@ -9,8 +9,8 @@ void navball() {
   altimeter(alt-altSync);
   speedo();
   lines();
-  compass(heading,120,0,"GPS");
-  compass(heading2,-120,0,"Magnetic");
+  compass(heading,163,-85,"GPS");
+  compass(heading2,-163,-85,"Magnetic");
   yvar = 5*(orientation[0]);
   rotation = 2*(orientation[1]);
   pushMatrix();

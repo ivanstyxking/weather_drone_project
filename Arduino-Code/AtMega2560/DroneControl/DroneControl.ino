@@ -29,6 +29,7 @@ int SENSOR_SIGN[9] = {
 #include <Wire.h>
 #include <TinyGPS++.h>
 #include <Servo.h>
+#include <SFE_BMP180.h>
 
 // LSM303 accelerometer: 8 g sensitivity
 // 3.9 mg/digit; 1 g = 256
@@ -159,14 +160,25 @@ int messageNum;
 
 String messages[5]; // Incoming messages
 int servoPos[5]; // Positions of the servos
+String dht22[4];
 
 unsigned long timeoutStart = 0;
 unsigned long timeoutCurrent = 0;
 
 boolean serialLoop = false;
 
+double baselinePressure;
+double bmpAltitute;
+double bmpPressure;
+double bmpTemperature;
+char waitTime;  // Time to wait before requesting senor data
+int waitOk = 0;
+unsigned long waitStart = 0;
+
 TinyGPSPlus gps;
+SFE_BMP180 bmp180;
 Servo servo1;
+Servo servo2;
 
 void setup()
 { 
@@ -181,6 +193,7 @@ void setup()
   Gyro_Init();
   GPS_Init();
   Servo_Init();
+  BMP180_Init();
 
   delay(20);
 
@@ -246,9 +259,10 @@ void loop() { //Main Loop
   dtostrf(ToDeg(pitch),3,2,charPitch);
   dtostrf(ToDeg(yaw),3,2,charYaw);
   
-  if (digitalRead(11)) {  // Line will be pulled high when a read is ready  
+  if (digitalRead(11) == HIGH) {  // Line will be pulled high when a read is ready  
     readSensorPreprocessor();
   }
+  Read_BMP180();
 }
 
 

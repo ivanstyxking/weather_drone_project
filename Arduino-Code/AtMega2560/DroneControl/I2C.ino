@@ -72,3 +72,29 @@ void Read_Compass()
   magnetom_z = SENSOR_SIGN[8] * compass.m.z;
 }
 
+void BMP180_Init() {
+  bmp180.begin();
+  //baselinePressure = Read_BMP180();  // Can use delays...
+}
+
+void Read_BMP180() {  // Cant use delays
+
+  if (waitOk == 0) {
+    Serial.println("Requesting temperature");
+    waitTime = bmp180.startPressure(3);  
+    waitOk = 1;
+    waitStart = millis();
+    Serial.print("Wait time is: "); 
+    Serial.println(waitTime);
+  }
+  if (waitOk == 1) {
+    if (millis() - waitStart >= waitTime  || waitTime == ' ') {
+      bmp180.getTemperature(bmpTemperature);
+      Serial.print("Read temperature as: ");
+      Serial.println(bmpTemperature);
+      waitOk = 2;
+    }
+  }
+}
+
+
