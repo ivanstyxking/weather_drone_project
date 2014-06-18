@@ -4,17 +4,20 @@
 L3G gyro;
 LSM303 compass;
 
-void I2C_Init() {
+void I2C_Init()
+{
   Wire.begin();
 }
 
-void Gyro_Init() {
+void Gyro_Init()
+{
   gyro.init();
   gyro.writeReg(L3G_CTRL_REG4, 0x20); // 2000 dps full scale
   gyro.writeReg(L3G_CTRL_REG1, 0x0F); // normal power mode, all axes enabled, 100 Hz
 }
 
-void Read_Gyro() {
+void Read_Gyro()
+{
   gyro.read();
 
   AN[0] = gyro.g.x;
@@ -25,7 +28,8 @@ void Read_Gyro() {
   gyro_z = SENSOR_SIGN[2] * (AN[2] - AN_OFFSET[2]);
 }
 
-void Accel_Init() {
+void Accel_Init()
+{
   compass.init();
   compass.enableDefault();
   switch (compass.getDeviceType())
@@ -42,7 +46,8 @@ void Accel_Init() {
 }
 
 // Reads x,y and z accelerometer registers
-void Read_Accel() {
+void Read_Accel()
+{
   compass.readAcc();
 
   AN[3] = compass.a.x >> 4; // shift left 4 bits to use 12-bit representation (1 g = 256)
@@ -53,11 +58,13 @@ void Read_Accel() {
   accel_z = SENSOR_SIGN[5] * (AN[5] - AN_OFFSET[5]);
 }
 
-void Compass_Init() {
+void Compass_Init()
+{
   // doesn't need to do anything because Accel_Init() should have already called compass.enableDefault()
 }
 
-void Read_Compass() {
+void Read_Compass()
+{
   compass.readMag();
 
   magnetom_x = SENSOR_SIGN[6] * compass.m.x;

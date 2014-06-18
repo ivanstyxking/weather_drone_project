@@ -12,3 +12,4 @@ void getDHT() {  // Can only be called once every 2 seconds
   heatIndexF = dht.computeHeatIndex(temperatureF, humidity); // Computer heat index
   heatIndexC = (heatIndexF-32)/1.8; // Convert heat index to C
 }
+

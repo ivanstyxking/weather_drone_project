@@ -25,4 +25,3 @@ void GPS_Init() {
   Serial3.write(0x0D); // CR
   Serial3.write(0x0A); // NL
 }
-
