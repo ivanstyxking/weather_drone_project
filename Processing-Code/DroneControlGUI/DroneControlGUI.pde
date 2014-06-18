@@ -3,7 +3,7 @@
 import processing.serial.*;
 
 float originX =756;
-float originY =500;
+float originY =480;
 float diam = 300;
 
 PFont font1;
@@ -79,19 +79,18 @@ void draw() {
   displaymap(tempx, tempy);
   edges(); //display objects only in map region
   lockGPS(false); //the argument here will have to communicate with the arduino code
-  gauge(1, ailerons, 1.56, "ailrs"); //guage args : [int shift, float value, float scaler, String name]
-  gauge(2, ailerons2, 1.56, "ailrs2");
-  gauge(3, elevator, 1.56, "elev");
-  gauge(4, throttle, 1.56, "throt");
-  gauge(5, rudder, 1.56, "rud");
-  gauge(6,gear,1.56,"gear");
+  gauge(1, ailerons, 1.4, "ailrs"); //guage args : [int shift, float value, float scaler, String name]
+  gauge(2, ailerons2, 1.4, "ailrs2");
+  gauge(3, elevator, 1.4, "elev");
+  gauge(4, throttle, 1.4, "throt");
+  gauge(5, rudder, 1.4, "rud");
+  gauge(6,gear,1.4,"gear");
   tempDisplay(bmpTemperature,dhtTemperature,685,200);
-  barometer(1013,570,420,990,1030);
+  barometer(999,570,395,990,1030);
   navball();
   scaling_button();
   console_out();
   orbit(0.1*angle);
-
   button(530, 270, "map sync", 1); //GUI buttons :: [position x, position y, name, case procedure]
   button(635, 270, "alt sync", 2);
   button(635, 240, "home", 3);
@@ -110,6 +109,5 @@ void orbit(float angle) { //temporary code - simulates the glider positions
   tempy = 100*sin(angle);
   alt+=0.2;
 }
-
 
 
