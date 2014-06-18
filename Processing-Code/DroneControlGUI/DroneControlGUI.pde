@@ -79,12 +79,12 @@ void draw() {
   displaymap(tempx, tempy);
   edges(); //display objects only in map region
   lockGPS(false); //the argument here will have to communicate with the arduino code
-  gauge(1, ailerons, 1.4, "ailrs"); //guage args : [int shift, float value, float scaler, String name]
-  gauge(2, ailerons2, 1.4, "ailrs2");
-  gauge(3, elevator, 1.4, "elev");
-  gauge(4, throttle, 1.4, "throt");
-  gauge(5, rudder, 1.4, "rud");
-  gauge(6,gear,1.4,"gear");
+  gauge(1, ailerons, 1.3, "ailrs"); //guage args : [int shift, float value, float scaler, String name]
+  gauge(2, ailerons2, 1.3, "ailrs2");
+  gauge(3, elevator, 1.3, "elev");
+  gauge(4, throttle, 1.3, "throt");
+  gauge(5, rudder, 1.3, "rud");
+  gauge(6,gear,1.3,"gear");
   tempDisplay(bmpTemperature,dhtTemperature,685,200);
   barometer(999,570,395,990,1030);
   navball();
