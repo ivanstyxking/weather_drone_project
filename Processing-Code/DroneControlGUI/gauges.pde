@@ -33,16 +33,16 @@ void barometer(float millibars,int X, int Y,float rangeStart,float rangeEnd){
   text("mB",57,-65);
   textFont(font1,12);
   text(nf(millibars,1,1),57,-50);
-  for(float i=rangeStart/10;i<=rangeEnd/10;i+=2){
-    if(i<=millibars/10){
+  for(float i=rangeStart;i<=rangeEnd;i+=1){
+    if(i<=millibars){
       stroke(255,100,0);
     }else{
     stroke(255,100,0,130);
     }
-    line(-25,100-i*2+rangeStart/10,5,100-i*2+rangeStart/10);
+    line(-25,50-(rangeStart-i)*-3,5,50-(rangeStart-i)*-3);
     textFont(font1,9);
-    if(i%10 == 0){
-    text(nf(i*10,1,0),17,103-i*2+rangeStart/10);
+    if(i%5 == 0){
+    text(nf(i,1,0),17,53-(rangeStart-i)*-3);
     }
   }
   popMatrix();
