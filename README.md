@@ -19,7 +19,7 @@ Need completion!
 
 6)  Research documentation
 
-7)  Circuit board design
+7)  **~~Circuit board design~~**
 
 8)  Circuit board manufacture
 
@@ -29,7 +29,7 @@ Need completion!
 
 11) Battery bay designing and building
 
-12) Barometric pressure sensor implementation
+12) **~~Barometric pressure sensor implementation~~**
 
 13) **~~Temperature sensor implementation~~**
 
@@ -53,7 +53,7 @@ Need completion!
 
 23) Order battery voltage monitor
 
-24) Create antenna
+24) **~~Create antenna~~**
 
 25) Add programming headers to all boards
 
@@ -83,13 +83,13 @@ Need completion! (GUI)
 Things in the post
 ===================
 
-1)  AtMega1284p (New processor)
+1)  **~~AtMega1284p (New processor)~~**
 
-2)  40pin DIP holder
+2)  **~~40pin DIP holder~~**
 
-3)  4x 16Mhz crystal
+3)  **~~4x 16Mhz crystal~~**
 
-4)  2.4Ghz xBee radio
+4)  **~~2.4Ghz xBee radio~~**
 
 5)  40 pin headers
 
