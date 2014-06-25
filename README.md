@@ -2,7 +2,7 @@ weather_drone_project
 =====================
 
 Adrina is mostly a horse<br>
-<a href="http://imgur.com/aZDeAyF">sam</a>
+<a href="http://i.imgur.com/aZDeAyF.png">sam</a>
 
 Need completion!
 ================
