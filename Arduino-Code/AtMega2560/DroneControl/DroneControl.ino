@@ -185,10 +185,12 @@ TinyGPSPlus gps;
 SFE_BMP180 bmp180;
 Servo servo1;
 Servo servo2;
+Servo servo3;
+Servo servo4;
 
 void setup()
 { 
-  Serial.begin(75600);
+  Serial.begin(57600);
   I2C_Init();
 
   pinMode(11, INPUT);
