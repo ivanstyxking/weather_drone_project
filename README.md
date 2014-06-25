@@ -66,7 +66,7 @@ Need completion! (GUI)
 
 2)  Compass code correction
 
-3)  Way point boundaries
+3)  **~~Way point boundaries~~**
 
 4)  **~~GUI temperature sensors display~~**
 
