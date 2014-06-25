@@ -92,18 +92,19 @@ void mouseReleased() {
 }
 void displayWaypoints() {
   homeWaypoint(homeX,homeY);
+  textAlign(CENTER,CENTER);
   for (int moo = 0;moo<=waypointcount-1;moo++) {
     if (moo == targetValue) {
       fill(100, 255, 0,200);
       ellipse(waypointX[moo], waypointY[moo], 18, 18);
       fill(0);
-      text(moo+1, waypointX[moo], waypointY[moo]+4);
+      text(moo+1, waypointX[moo], waypointY[moo]);
     }
     else {
       noFill();
       ellipse(waypointX[moo], waypointY[moo], 18, 18);
       fill(100, 255, 0);
-      text(moo+1, waypointX[moo], waypointY[moo] +5);
+      text(moo+1, waypointX[moo], waypointY[moo]);
     }
     if (moo>=1) {
       stroke(100, 255, 0, 125);
@@ -111,6 +112,7 @@ void displayWaypoints() {
       stroke(100, 255, 0);
     }
   }
+  textAlign(CENTER);
 }
 void homeWaypoint(float x,float y){
   ellipse(x,y,18,18);
