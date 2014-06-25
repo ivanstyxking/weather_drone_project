@@ -18,6 +18,7 @@ void displaymap(float x, float y) { //main map procedure
     translate(-1*syncX, -1*syncY); //translate all events to the current sync position
     wayPoint(); //drag circle
     translate(260, 268);
+    checkBoundry(targetWP,15);
     displayWaypoints(); //self explanatory
     targetwaypoint(targetWP); //display the target information
     translate(syncX, syncY);
@@ -93,7 +94,7 @@ void displayWaypoints() {
   homeWaypoint(homeX,homeY);
   for (int moo = 0;moo<=waypointcount-1;moo++) {
     if (moo == targetValue) {
-      fill(100, 255, 0);
+      fill(100, 255, 0,200);
       ellipse(waypointX[moo], waypointY[moo], 18, 18);
       fill(0);
       text(moo+1, waypointX[moo], waypointY[moo]+4);
@@ -233,4 +234,17 @@ void mousePressed(){
     info = !info;
   }
 }
-
+void checkBoundry(int wp,float rad){
+  wp--;
+  noFill();
+  stroke(255,100,0,100);
+  if(targetWP<=waypointcount){
+    ellipse(waypointX[wp],waypointY[wp],rad*2,rad*2);
+  }
+  if(sqrt(sq(waypointX[wp]-gX)+sq(waypointY[wp]-gY))<=rad){
+    if(targetWP<64){
+      targetWP++;
+    }
+  }
+ stroke(100,255,0); 
+}
