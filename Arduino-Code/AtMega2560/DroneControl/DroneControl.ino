@@ -188,7 +188,7 @@ Servo servo2;
 
 void setup()
 { 
-  Serial.begin(115200);
+  Serial.begin(75600);
   I2C_Init();
 
   pinMode(11, INPUT);
