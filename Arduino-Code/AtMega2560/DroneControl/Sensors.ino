@@ -47,9 +47,9 @@ void sensorGet() {
 
 void servoSort() {
   servo1.write(messages[1].toInt());
-  servo2.write(messages[1].toInt());
-  servo3.write(messages[1].toInt());
-  servo4.write(messages[1].toInt());
+  servo2.write(messages[2].toInt());
+  servo3.write(messages[3].toInt());
+  servo4.write(messages[4].toInt());
 }
 
 void Servo_Init(){
