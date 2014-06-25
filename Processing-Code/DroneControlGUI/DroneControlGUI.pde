@@ -59,8 +59,8 @@ Serial serialPort;
 void setup() {
   heading2 = 0; //temporary
 
-  String portName = Serial.list()[0];
-  serialPort = new Serial(this, portName, 115200);
+  String portName = Serial.list()[1];
+  serialPort = new Serial(this, portName, 57600);
 
   info = false;
   homeX = 0;
@@ -102,6 +102,8 @@ void draw() {
   sendSerial();
   
   throttle = mouseY;
+  
+  delay(100);
 }
 void orbit(float angle) { //temporary code - simulates the glider positions
   angle=radians(angle);
