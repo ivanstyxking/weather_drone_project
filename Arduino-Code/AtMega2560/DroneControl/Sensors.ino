@@ -79,9 +79,8 @@ void readSensorPreprocessor() {
 
     dht22[x] = "";
     while(Wire.available()) {   // slave may send less than requested 
-      char c = Wire.read(); // receive a byte as character
+      char c = Wire.read(); // receive a byte as character;
       dht22[x] += c;
-      
     }
     x += 1;
   }

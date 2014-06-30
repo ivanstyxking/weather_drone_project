@@ -2,7 +2,7 @@
 #include <DHT.h>
 #include <Adafruit_Sensor.h>
 
-DHT dht(12, DHT22);  // Create DHT object
+DHT dht(8, DHT22);  // Create DHT object
 
 float humidity;
 float temperatureC;
@@ -26,8 +26,6 @@ void setup() {
   Wire.begin(2);
   Wire.onRequest(requestEvent);
   Wire.onReceive(recieveEvent);
-  Serial.begin(115200);
-  delay(100);
 
   delay(100);  
 

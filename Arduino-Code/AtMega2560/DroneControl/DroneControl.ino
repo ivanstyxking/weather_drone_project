@@ -193,7 +193,7 @@ void setup()
   Serial.begin(57600);
   I2C_Init();
 
-  pinMode(20, INPUT);
+  pinMode(18, INPUT);
   delay(500);
 
   Accel_Init();
@@ -270,9 +270,10 @@ void loop() { //Main Loop
   dtostrf(bmpTemperature,3,2,stringTemperature);
   dtostrf(bmpAltitude,5,2,stringAltitude);
   
-  if (digitalRead(20) == HIGH) {  // Line will be pulled high when a read is ready  
+  if (digitalRead(18) == HIGH) {  // Line will be pulled high when a read is ready  
     readSensorPreprocessor();
-  }
+  }  
+  
   Read_BMP180();
 }
 
