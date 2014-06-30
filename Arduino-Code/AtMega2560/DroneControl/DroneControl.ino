@@ -49,12 +49,12 @@ int SENSOR_SIGN[9] = {
 
 // LSM303 magnetometer calibration constants; use the Calibrate example from
 // the Pololu LSM303 library to find the right values for your board
-#define M_X_MIN -421
-#define M_Y_MIN -639
-#define M_Z_MIN -238
-#define M_X_MAX 424
-#define M_Y_MAX 295
-#define M_Z_MAX 472
+#define M_X_MIN -674
+#define M_Y_MIN -548
+#define M_Z_MIN -425
+#define M_X_MAX 338
+#define M_Y_MAX 718
+#define M_Z_MAX 752
 
 #define Kp_ROLLPITCH 0.02
 #define Ki_ROLLPITCH 0.00002
@@ -193,7 +193,7 @@ void setup()
   Serial.begin(57600);
   I2C_Init();
 
-  pinMode(11, INPUT);
+  pinMode(20, INPUT);
   delay(500);
 
   Accel_Init();
@@ -270,7 +270,7 @@ void loop() { //Main Loop
   dtostrf(bmpTemperature,3,2,stringTemperature);
   dtostrf(bmpAltitude,5,2,stringAltitude);
   
-  if (digitalRead(11) == HIGH) {  // Line will be pulled high when a read is ready  
+  if (digitalRead(20) == HIGH) {  // Line will be pulled high when a read is ready  
     readSensorPreprocessor();
   }
   Read_BMP180();

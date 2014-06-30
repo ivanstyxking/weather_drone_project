@@ -84,8 +84,8 @@ void sensorSort() {
   
   
   if (messages[0].equals("S") && test) {
-    orientation[0]=float(messages[2]);
-    orientation[1]=float(messages[3]);
+    orientation[0]=float(messages[3]);
+    orientation[1]=float(messages[2]);
     orientation[2]=float(messages[4]);
     heading2 = int(2*orientation[2]);
   }

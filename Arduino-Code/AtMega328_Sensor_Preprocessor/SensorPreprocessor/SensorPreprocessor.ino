@@ -22,8 +22,7 @@ long interval = 2000;
 
 void setup() {
 
-  pinMode(9, OUTPUT);
-  pinMode(13, OUTPUT);
+  pinMode(A3, OUTPUT);
   Wire.begin(2);
   Wire.onRequest(requestEvent);
   Wire.onReceive(recieveEvent);
@@ -42,11 +41,11 @@ void loop() {
 
   unsigned long currentMillis = millis();
   if(currentMillis - previousMillis > interval) {  // 2 second loop
-    digitalWrite(9, LOW);  // Prevent a i2c request
+    digitalWrite(A3, LOW);  // Prevent a i2c request
     delay(10);
     previousMillis = currentMillis;
     getDHT();
-    digitalWrite(9, HIGH);
+    digitalWrite(A3, HIGH);
   }
 
 }
@@ -71,7 +70,7 @@ void requestEvent() {
 }
 
 void recieveEvent(int howMany) {
-  digitalWrite(9,LOW);
+  digitalWrite(A3, LOW);
   sensor = Wire.read();
 }
 

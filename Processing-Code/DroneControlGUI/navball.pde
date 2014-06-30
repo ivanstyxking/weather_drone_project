@@ -12,7 +12,7 @@ void navball() {
   compass(heading,165,-80,"GPS");
   compass(heading2,-165,-80,"Magnetic");
   yvar = 5*(orientation[0]);
-  rotation = 2*(orientation[1]);
+  rotation = -2*(orientation[1]);
   pushMatrix();
   translate(originX, originY);
   rotate(radians(rotation));
