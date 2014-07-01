@@ -9,11 +9,11 @@ Need completion!
 
 1)  Serial networking code
 
-2)  Servo implementation
+2)  **~~Servo implementation~~**
 
 3)  **~~One wire and servo tests (Does not work)~~**
 
-4)  Atmega328p wire to serial programming
+4)  **~~Atmega328p wire to serial programming~~**
 
 5)  Pictures and documentation
 
@@ -21,11 +21,11 @@ Need completion!
 
 7)  **~~Circuit board design~~**
 
-8)  Circuit board manufacture
+8)  **~~Circuit board manufacture~~**
 
-9)  Circuit board soldering / testing
+9)  **~~Circuit board soldering / testing~~**
 
-10) Motor mounting
+10) **~~Motor mounting~~**
 
 11) Battery bay designing and building
 
@@ -47,17 +47,15 @@ Need completion!
 
 20) Allow the arduino to be reset and pick up serial stream again
 
-21) Implement GPS to GUI
+21) **~~Order board connectors~~**
 
-22) **~~Order board connectors~~**
+22) Order battery voltage monitor
 
-23) Order battery voltage monitor
+23) **~~Create antenna~~**
 
-24) **~~Create antenna~~**
+24) Add programming headers to all boards
 
-25) Add programming headers to all boards
-
-26) Attatch fireworks to drone and aim for the moon
+25) Attatch fireworks to drone and aim for the moon
 
 Need completion! (GUI)
 =======================
@@ -78,7 +76,9 @@ Need completion! (GUI)
 
 8)  Console out coding
 
-9)  PLace to enter local sea level pressure for altitude calculations
+9)  Place to enter local sea level pressure for altitude calculations
+
+10) Implement GPS to GUI
 
 Things in the post
 ===================
