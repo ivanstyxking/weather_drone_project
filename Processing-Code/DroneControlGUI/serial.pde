@@ -96,7 +96,7 @@ void sensorSort() {
 
 void sendSerial() {
 
-  serialPort.write("S," + str(throttle) + ",%");    //Send all values to the plane
+  serialPort.write("S," + str(throttle) + str(throttle) + "," + str(throttle) + "," + str(throttle) + ",%");    //Send all values to the plane
 }
 
 void checkNumInc() {

@@ -103,7 +103,7 @@ void draw() {
   
   throttle = mouseY;
   
-  delay(10);
+  delay(20);
 }
 void orbit(float angle) { //temporary code - simulates the glider positions
   angle=radians(angle);
