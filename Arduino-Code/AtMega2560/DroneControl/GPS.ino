@@ -1,5 +1,5 @@
 void getGPS() {
-  while (Serial1.available()) {
+  if (Serial1.available() > 0) {
     gps.encode(Serial1.read());
   }
 }

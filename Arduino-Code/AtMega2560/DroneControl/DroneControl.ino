@@ -122,29 +122,29 @@ byte gyro_sat=0;
 
 float DCM_Matrix[3][3]= {
   {
-    1,0,0                }
+    1,0,0                                                                                }
   ,{
-    0,1,0                }
+    0,1,0                                                                                }
   ,{
-    0,0,1                }
+    0,0,1                                                                                }
 }; 
 float Update_Matrix[3][3]={
   {
-    0,1,2              }
+    0,1,2                                                                              }
   ,{
-    3,4,5              }
+    3,4,5                                                                              }
   ,{
-    6,7,8              }
+    6,7,8                                                                              }
 }; //Gyros here
 
 
 float Temporary_Matrix[3][3]={
   {
-    0,0,0                }
+    0,0,0                                                                                }
   ,{
-    0,0,0                }
+    0,0,0                                                                                }
   ,{
-    0,0,0                }
+    0,0,0                                                                                }
 };
 
 char incomingChar;
@@ -229,9 +229,7 @@ void setup()
 
 void loop() { //Main Loop
 
-    if((millis()-timer)>=20)  // Main loop runs at 50Hz
-  {
-    getGPS();  // GPS can be collected here because it has a 10Hz update rate
+  if((millis()-timer)>=20) {  // Main loop runs at 50Hz
     counter++;
     timer_old = timer;
     timer=millis();
@@ -245,8 +243,7 @@ void loop() { //Main Loop
     Read_Gyro();   // This read gyro data
     Read_Accel();     // Read I2C accelerometer
 
-    if (counter > 5)  // Read compass data at 10Hz... (5 loop runs)
-    {
+    if (counter > 5) { // Read compass data at 10Hz... (5 loop runs)
       counter=0;
       Read_Compass();    // Read I2C magnetometer
       Compass_Heading(); // Calculate magnetic heading  
@@ -260,21 +257,54 @@ void loop() { //Main Loop
 
 
     // ***  
-  }
+  }  
 
   serialCheck();
+  getGPS();
   dtostrf(ToDeg(roll),3,2,charRoll);
   dtostrf(ToDeg(pitch),3,2,charPitch);
   dtostrf(ToDeg(yaw),3,2,charYaw);
   dtostrf(bmpPressure,5,2,stringPressure);
   dtostrf(bmpTemperature,3,2,stringTemperature);
   dtostrf(bmpAltitude,5,2,stringAltitude);
-  
+
   if (digitalRead(20) == HIGH) {  // Line will be pulled high when a read is ready  
     readSensorPreprocessor();
     Read_BMP180();
   }  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

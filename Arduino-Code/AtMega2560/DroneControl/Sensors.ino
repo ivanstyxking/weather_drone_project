@@ -9,25 +9,19 @@ void sensorGet() {
     Serial.print(buffer);
   }
   else if (messages[1] == "2"){  // Send GPS data
-    float buffer1 = gps.location.lat(); 
-    float buffer2 = gps.location.lng();
-    float buffer3 = gps.speed.mps();
-    float buffer4 = gps.course.deg();
-    float buffer5 = gps.altitude.meters();
-    float buffer6 = gps.altitude.meters();
 
     Serial.print("S,2,");
-    Serial.print(buffer1);
+    Serial.print(gps.location.lat(), 6);
     Serial.print(","); 
-    Serial.print(buffer2);
+    Serial.print(gps.location.lng(), 6);
     Serial.print(",");
-    Serial.print(buffer3);
+    Serial.print(gps.speed.mps());
     Serial.print(",");
-    Serial.print(buffer4);
+    Serial.print(gps.course.deg());
     Serial.print(",");
-    Serial.print(buffer5);
+    Serial.print(gps.altitude.meters());
     Serial.print(",");
-    Serial.print(buffer6);
+    Serial.print(gps.time.minute());
     Serial.print("," + messages[2] + ",%");   
   } 
   else if (messages[1] == "3") {  // Send sensor data
