@@ -21,7 +21,7 @@ void sensorGet() {
     Serial.print(",");
     Serial.print(gps.altitude.meters());
     Serial.print(",");
-    Serial.print(gps.time.minute());
+    Serial.print(gps.satellites.value());
     Serial.print("," + messages[2] + ",%");   
   } 
   else if (messages[1] == "3") {  // Send sensor data
