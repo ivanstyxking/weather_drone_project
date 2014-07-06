@@ -54,3 +54,29 @@ void barometer(float millibars,int X, int Y,float rangeStart,float rangeEnd){
   }
   popMatrix();
 }
+void hygrometer(float value, int X, int Y, color c){
+  pushMatrix();
+    translate(X,Y);
+    stroke(c,100);
+    rect(0,-10,60,130);
+    rect(-57,-55,50,40);
+    textFont(font1,12);
+    fill(c);
+    text("%",-57,-65);
+    text(nf(value,1,1),-57,-50);
+    noFill();
+    for(float i=0;i<=60;i++){
+      if(i<=value*60/100){
+        stroke(c);
+      }else{
+        stroke(c,130);
+      }
+      strokeWeight(1);
+      line(-25,50+(i)*-2,5,50+(i)*-2);
+      if(i%6==0){
+        textFont(font1,9);
+        text(nf(i*10/6,1,0),17,53-i*2);
+      }
+    }
+  popMatrix();
+}
