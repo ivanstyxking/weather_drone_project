@@ -87,6 +87,7 @@ void draw() {
   gauge(6,gear,1.3,"gear");
   tempDisplay(bmpTemperature,dhtTemperature,685,200);
   barometer(999,570,395,990,1030);
+  hygrometer(75,width-58,395,color(0,255,255));
   navball();
   scaling_button();
   console_out();
