@@ -33,11 +33,11 @@ void tempDisplay(float temp1, float temp2, int X, int Y){
      text("dht",20,-10);
      text("Temperature",0,-30);
     textFont(font1,30);
-    text("34",-25,15);
+    text(nf(temp1, 2, 1),-25,15);
     stroke(100,255,0);
     ellipse(-6,-5,5,5);
     fill(255,100,0);
-    text("32",20,15);
+    text(nf(temp2, 2, 1),20,15);
     noFill();
     stroke(255,100,0);
     ellipse(39,-5,5,5);

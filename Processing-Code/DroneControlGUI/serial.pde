@@ -1,19 +1,14 @@
-void recieveSerial() {
-  serialRequest();
-
-
-  print("Sensor 1: ");
-  println(sensors[1]);
-  print("Sensor 2: ");
-  println(sensors[2]);
-  print("Sensor 3: ");
-  println(sensors[3]);
-  print("Sensor 4: ");
-  println(sensors[4]);
-
+void serialRequestNum() {
+  
+    serialRequest(requestNumber);
+  if (requestNumber < 3) {
+    requestNumber ++;
+  } else {
+    requestNumber = 1;
+  }
 }
 
-void serialRequest() {
+void serialRequest(int sensorGroup) {
 
   checkNumInc();
 
@@ -30,10 +25,12 @@ void serialRequest() {
 
   println("Check number is: " + checkNum[0]);
 
-  serialPort.write("R,1," + checkNum[0] + ",%");
+  serialPort.write("R," + sensorGroup + "," + checkNum[0] + ",%");
 
-  println("Sent message is: " + "R,1," + checkNum[0] + ",%");
+  println("Sent message is: " + "R," + sensorGroup + "," + checkNum[0] + ",%");
+}
 
+void serialRecieve() {
 
   incomingChar = ' ';                                             //Clear all variables before start
   incomingString = "";
@@ -78,25 +75,35 @@ void splitString() {
 
 void sensorSort() {
 
-  boolean test = mesLagCheck();
+  boolean test = true; //mesLagCheck();
   println("Lag check num: " + messages[5]);
   println("Result of lag check: " + test);
-  
-  
-  if (messages[0].equals("S") && test) {
+
+
+  if (messages[0].equals("S") && messages[1].equals("1") && test) {
     orientation[0]=float(messages[3]);
     orientation[1]=float(messages[2]);
     orientation[2]=float(messages[4]);
-    heading2 = int(2*orientation[2]);
+    heading2 = int(orientation[2]);
+  } 
+  
+  else if (messages[0].equals("S") && messages[1].equals("2") && test) {
+    
   }
-  else {
+  
+  else if (messages[0].equals("S") && messages[1].equals("3") && test) {
+    humidityDHT = float(messages[2]);
+    temperatureDHT = float(messages[3]);
+    heatIndexDHT = float(messages[4]);
+    pressureMB = float(messages[5]);
+    temperatureBMP = float(messages[6]);
+  } else {
     // Error if an incorrect string is recieved
   }
 }
 
-void sendSerial() {
-
-  serialPort.write("S," + str(throttle) + str(throttle) + "," + str(throttle) + "," + str(throttle) + ",%");    //Send all values to the plane
+void sendValuesSerial() {
+  serialPort.write("S," + str(throttle) + "," + str(throttle) + "," + str(throttle) + "," + str(throttle) + ",%");    //Send all values to the plane
 }
 
 void checkNumInc() {
@@ -109,42 +116,42 @@ void checkNumInc() {
 
 boolean mesLagCheck() {
   if (int(messages[5]) == checkNum[0]) {          // Lag / serial buffer check
-  println("Message latency: 0");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[1]))) {       
-  println("Message latency: 1");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[2]))) {       
-  println("Message latency: 2");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[3]))) {       
-  println("Message latency: 3");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[4]))) {       
-  println("Message latency: 4");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[5]))) {       
-  println("Message latency: 5");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[6]))) {       
-  println("Message latency: 6");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[7]))) {       
-  println("Message latency: 7");
-  return true;
-  }
-  else if (messages[5].equals(str(checkNum[8]))) {       
-  println("Message latency: 8");
-  return true;
-  }
-  else {
+    println("Message latency: 0");
+    lagCheckDelay = 0;
+    return true;
+  } else if (messages[5].equals(str(checkNum[1]))) {       
+    println("Message latency: 1");
+    lagCheckDelay = 1;
+    return true;
+  } else if (messages[5].equals(str(checkNum[2]))) {       
+    println("Message latency: 2");
+    lagCheckDelay = 2;
+    return true;
+  } else if (messages[5].equals(str(checkNum[3]))) {       
+    println("Message latency: 3");
+    lagCheckDelay = 3;
+    return true;
+  } else if (messages[5].equals(str(checkNum[4]))) {       
+    println("Message latency: 4");
+    lagCheckDelay = 4;
+    return true;
+  } else if (messages[5].equals(str(checkNum[5]))) {       
+    println("Message latency: 5");
+    lagCheckDelay = 5;
+    return true;
+  } else if (messages[5].equals(str(checkNum[6]))) {       
+    println("Message latency: 6");
+    lagCheckDelay = 6;
+    return true;
+  } else if (messages[5].equals(str(checkNum[7]))) {       
+    println("Message latency: 7");
+    lagCheckDelay = 7;
+    return true;
+  } else if (messages[5].equals(str(checkNum[8]))) {       
+    println("Message latency: 8");
+    lagCheckDelay = 8;
+    return true;
+  } else {
     println("Max message lag exceded");
     serialFlush();
     return false;
@@ -154,7 +161,6 @@ boolean mesLagCheck() {
 void serialFlush() {
   println("---------------------| Flushing |-------------------------");
   serialPort.clear();
-  serialRequest();
   delay(100);
 }
 

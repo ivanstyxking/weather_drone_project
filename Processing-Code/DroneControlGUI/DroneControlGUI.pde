@@ -23,9 +23,6 @@ float[] waypointX = new float[64];
 float[] waypointY = new float[64];
 int[] sensors = new int[5];
 
-float bmpTemperature = 32;
-float dhtTemperature = 34;
-
 int waypointcount = 0;
 
 float tempx, tempy, syncX, syncY, scale, initX, initY;
@@ -45,6 +42,7 @@ int[] checkNum = new int[11];
 
 long timeoutStart = 0;
 long timeoutCurrent = 0;
+long previousMillis = 0;
 
 char incomingChar;
 String incomingString;
@@ -53,13 +51,21 @@ String outgoingString;
 int commaPosition;
 int messageNum;
 int posInArr;
+int requestNumber = 1;
+int lagCheckDelay;
+
+float pressureMB;
+float humidityDHT;
+float temperatureDHT;
+float heatIndexDHT;
+float temperatureBMP;
 
 Serial serialPort;
 
 void setup() {
   heading2 = 0; //temporary
 
-  String portName = Serial.list()[0];
+  String portName = Serial.list()[1];
   serialPort = new Serial(this, portName, 57600);
 
   info = false;
@@ -85,9 +91,9 @@ void draw() {
   gauge(4, throttle, 1.3, "throt");
   gauge(5, rudder, 1.3, "rud");
   gauge(6,gear,1.3,"gear");
-  tempDisplay(bmpTemperature,dhtTemperature,685,200);
-  barometer(999,570,395,990,1030);
-  hygrometer(75,width-58,395,color(0,255,255));
+  tempDisplay(temperatureBMP,temperatureDHT,685,200);
+  barometer(pressureMB,570,395,990,1030);
+  hygrometer(humidityDHT,width-58,395,color(0,255,255));
   navball();
   scaling_button();
   console_out();
@@ -99,12 +105,17 @@ void draw() {
   clock();
   angle++;
   
-  serialRequest();
-  sendSerial();
+  if (millis() - previousMillis >= 20) {
+    previousMillis = millis();
+    
+    sendValuesSerial();  // Only called once every IDK
+    serialRequestNum();  // Only called once every 10ms
+  }
+  
+  serialRecieve();
   
   throttle = mouseY;
   
-  delay(20);
 }
 void orbit(float angle) { //temporary code - simulates the glider positions
   angle=radians(angle);
@@ -112,5 +123,3 @@ void orbit(float angle) { //temporary code - simulates the glider positions
   tempy = 100*sin(angle);
   alt+=0.2;
 }
-
-
