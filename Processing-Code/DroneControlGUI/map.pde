@@ -64,7 +64,7 @@ void positioning(float x, float y) {
   x=x+250;
   translate(x-syncX, y-syncY);
   pushMatrix();
-  rotate(radians(heading+180));
+  //rotate(radians(heading+180));
   glider();
   popMatrix();
 }
@@ -75,21 +75,7 @@ void wayPoint() {
     noFill();
   }
 }
-void mouseReleased() {
-  release = true;
-  if ((mouseX>10)&&(mouseX<510)&&(mouseY>18)&&(mouseY<518)) {
-    waypointcount++;
-    if(waypointcount>64){
-      waypointcount=64;
-    }
-    ymouse = int((mouseY+syncY));
-    xmouse = int((mouseX+syncX));
-    yval = (-1*(268+-1*ymouse));
-    xval = (xmouse -260) ;
-    waypointX[waypointcount-1] = xval;
-    waypointY[waypointcount-1] = yval;
-  }
-}
+
 void displayWaypoints() {
   homeWaypoint(homeX,homeY);
   textAlign(CENTER,CENTER);
@@ -222,7 +208,7 @@ void buttonFunction(int k) { //value k selects the procedure that the button exe
     syncY = gY; 
     break;
   case 2:
-    altSync = alt;
+    altSync = altitudeGPS;
     break;
   case 3:
     homeX = gX;
@@ -230,12 +216,7 @@ void buttonFunction(int k) { //value k selects the procedure that the button exe
     break;
   }
 }
-void mousePressed(){
-  if((mouseX>530)&&(mouseX<630)&&
-  (mouseY>240)&&(mouseY<265)) {
-    info = !info;
-  }
-}
+
 void checkBoundry(int wp,float rad){
   wp--;
   noFill();

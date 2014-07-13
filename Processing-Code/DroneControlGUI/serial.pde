@@ -81,14 +81,19 @@ void sensorSort() {
 
 
   if (messages[0].equals("S") && messages[1].equals("1") && test) {
-    orientation[0]=float(messages[3]);
-    orientation[1]=float(messages[2]);
-    orientation[2]=float(messages[4]);
+    orientation[0] = float(messages[3]);
+    orientation[1] = float(messages[2]);
+    orientation[2] = float(messages[4]);
     heading2 = int(orientation[2]);
   } 
   
   else if (messages[0].equals("S") && messages[1].equals("2") && test) {
-    
+    lattitudeGPS = float(messages[2]);
+    longitudeGPS = float(messages[3]);
+    speedMpsGPS = float(messages[4]);
+    headingGPS = float(messages[5]);
+    altitudeGPS = float(messages[6]);
+    satillitesGPS = int(messages[7]);
   }
   
   else if (messages[0].equals("S") && messages[1].equals("3") && test) {

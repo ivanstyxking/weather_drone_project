@@ -80,3 +80,40 @@ void hygrometer(float value, int X, int Y, color c){
     }
   popMatrix();
 }
+
+void signalStrength(float strength, int X, int Y) {
+  pushMatrix();
+  translate(X, Y);
+  textAlign(LEFT);
+  fill(100,255,0);
+  text("signal :",0,-35);
+  fill(100, 255, 0);
+  colorMode(HSB, 300, 1, 1);
+  textFont(font1,18);
+  fill(strength,1,1);
+  text(nf(strength,1,1)+"%",0,-20);
+  textSize(9);
+  for (int i=0;i<=100;i++) {
+    if (i<=strength) {
+      stroke(strength, 1, 1);
+    }
+    else {
+      stroke(strength, 1, 1, 100);
+    }
+    if (i%2==0) {
+      line(i, 0, i, -i/3);
+    }
+    if (i%10 == 0) {
+      pushMatrix();
+      translate(i, -i+3);
+      rotate(PI/2);
+      fill(strength, 1, 1);
+      text(i, i, 0);
+      popMatrix();
+    }
+  }
+  popMatrix();
+  colorMode(RGB, 255);
+  noFill();
+  textAlign(CENTER);
+}

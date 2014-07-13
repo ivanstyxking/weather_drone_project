@@ -1,5 +1,5 @@
-void lockGPS(boolean areyouthere){
-  if(!areyouthere){ //if no GPS, alert 
+void lockGPS(){
+  if(satillitesGPS < 4){ //if no GPS, alert 
     textFont(font1,30);
     if(millis()-(millis()-millis()%1000)>500){
       noFill();
