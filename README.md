@@ -7,7 +7,7 @@ Adrina is mostly a horse<br>
 Need completion!
 ================
 
-1)  Serial networking code
+1)  **~~Serial networking code~~**
 
 2)  **~~Servo implementation~~**
 
@@ -57,6 +57,8 @@ Need completion!
 
 25) Attatch fireworks to drone and aim for the moon
 
+26) GPS Code fix
+
 Need completion! (GUI)
 =======================
 
@@ -74,11 +76,17 @@ Need completion! (GUI)
 
 7)  Zoomn buttons on map
 
-8)  Console out coding
+8)  **~~Console out coding~~**
 
 9)  Place to enter local sea level pressure for altitude calculations
 
 10) Implement GPS to GUI
+
+11) Place to display satillite lock
+
+12) Servo trim adustments 
+
+13) Servo limit adustments
 
 Things in the post
 ===================
