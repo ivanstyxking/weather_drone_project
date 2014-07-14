@@ -88,6 +88,8 @@ Need completion! (GUI)
 
 13) Servo limit adustments
 
+14) Fix temperature sensor display
+
 Things in the post
 ===================
 
