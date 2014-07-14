@@ -16,7 +16,7 @@ int serialPortNum = 0;
 boolean usingController = true;
 
 int targetValue, heading2; 
-int targetWP = 2;
+int targetWP = 1;
 
 boolean sending, recieving;
 boolean release, mouseOver, info;
@@ -77,8 +77,7 @@ ControllIO controller;
 ControllDevice device;
 ControllStick leftStick;
 ControllStick rightStick;
-ControllStick leftTrigger;
-ControllStick rightTrigger;
+ControllSlider throttleSlider;
 ControllButton aButton;
 ControllButton bButton;
 
@@ -142,8 +141,10 @@ void mainPage() {
   serialRecieve();
 
   if (usingController) {  // Get controller values
-    ailerons = 90 + leftStick.getX();
+    ailerons = 90 + rightStick.getX();
+    rudder = 90 + leftStick.getX();
     elevator = 90 + leftStick.getY();
+    throttle = 90 + throttleSlider.getValue();
   } else {  // Get mouse values
     throttle = mouseY;
   }
@@ -213,11 +214,17 @@ void launch() {
     device = controller.getDevice("Controller (XBOX 360 For Windows)");
     device.setTolerance(0.05f);
     
-    ControllSlider sliderX = device.getSlider("X Axis");
-    ControllSlider sliderY = device.getSlider("Y Axis");
+    ControllSlider leftSliderX = device.getSlider("X Axis");
+    ControllSlider leftSliderY = device.getSlider("Y Axis");
+    ControllSlider rightSliderX = device.getSlider("X Rotation");
+    ControllSlider rightSliderY = device.getSlider("Y Rotation");
+    throttleSlider = device.getSlider("Z Axis");
     
-    leftStick = new ControllStick(sliderX, sliderY);
+    leftStick = new ControllStick(leftSliderX, leftSliderY);
+    rightStick = new ControllStick(rightSliderX, rightSliderY); 
     leftStick.setMultiplier(90f);
+    rightStick.setMultiplier(90f);
+    throttleSlider.setMultiplier(90f);
   }
 }
 
