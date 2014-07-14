@@ -226,7 +226,7 @@ void checkBoundry(int wp,float rad){
   }
   if(sqrt(sq(waypointX[wp]-gX)+sq(waypointY[wp]-gY))<=rad){
     if(targetWP<64){
-      targetWP++;
+      wp++;
     }
   }
  stroke(100,255,0); 
