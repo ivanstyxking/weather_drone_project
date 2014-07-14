@@ -101,7 +101,7 @@ void signalStrength(float strength, int X, int Y) {
       stroke(strength, 1, 1, 100);
     }
     if (i%2==0) {
-      line(i, 0, i, -i/3);
+      line(i, 0, i, -0.1*(4+exp(2+float(i)/23)));
     }
     if (i%10 == 0) {
       pushMatrix();
