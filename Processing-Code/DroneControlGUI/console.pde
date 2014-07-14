@@ -21,7 +21,7 @@ void content(){
        "Array 7: "+checkNum[6] + "\n" +
        "Array 8: "+checkNum[7] + "\n" +
        "Check number is: " + checkNum[0]+"\n" +
-       "Sent message is: " + "R,1," + checkNum[0] + ",%" + "\n" +
+       "Sent message is: " + "R," + sensorGroup + "," + checkNum[0] + ",%" + "\n" +
        "Lag Check Delay: " + lagCheckDelay 
        ,20,height-150);
   textAlign(CENTER);

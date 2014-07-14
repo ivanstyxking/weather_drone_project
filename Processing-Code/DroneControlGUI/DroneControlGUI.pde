@@ -57,6 +57,7 @@ int messageNum;
 int posInArr;
 int requestNumber = 1;
 int lagCheckDelay;
+int sensorGroup;
 
 float pressureMB;
 float humidityDHT;

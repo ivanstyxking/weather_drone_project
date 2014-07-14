@@ -8,8 +8,10 @@ void serialRequestNum() {
   }
 }
 
-void serialRequest(int sensorGroup) {
+void serialRequest(int sensorGroupTemp) {
 
+  sensorGroup = sensorGroupTemp;
+  
   checkNumInc();
 
   checkNum[0] = int(random(100, 999));
@@ -108,7 +110,8 @@ void sensorSort() {
 }
 
 void sendValuesSerial() {
-  serialPort.write("S," + str(throttle) + "," + str(ailerons) + "," + str(elevator) + "," + str(rudder) + ",%");    //Send all values to the plane
+  serialPort.write("S," + str(round(throttle)) + "," + str(round(ailerons)) + "," + str(round(elevator)) + "," + str(round(rudder)) + ",%");    //Send all values to the plane
+  println("Sent Message is: S," + str(round(throttle)) + "," + str(round(ailerons)) + "," + str(round(elevator)) + "," + str(round(rudder)) + ",%");
 }
 
 void checkNumInc() {
