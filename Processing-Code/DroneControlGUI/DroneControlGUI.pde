@@ -117,7 +117,7 @@ void mainPage() {
   gauge(4, throttle, 1.3, "throt");
   gauge(5, rudder, 1.3, "rud");
   gauge(6, gear, 1.3, "gear");
-  tempDisplay(temperatureBMP, temperatureDHT, 685, 200);
+  tempDisplay(temperatureBMP, temperatureDHT, 660, 200);
   barometer(pressureMB, 570, 395, 990, 1030);
   hygrometer(humidityDHT, width-58, 395, color(0, 255, 255));
   signalStrength(90, 635, 60);
