@@ -17,21 +17,7 @@ void mouseReleased() {
   }
   if (pageNum == 1) {
     if (mouseX >= 45 && mouseX <= 95 && mouseY >= 150 && mouseY <= 170) { // Checks launch button
-      try {
-        String portName = Serial.list()[serialPortNum];
-        serialPort = new Serial(this, portName, 57600);
-      }
-      catch (Exception e) {
-        println("Something broke");
-        pageNum = 1;
-        // Invalid serial port code
-        return;
-      }
-      frame.setSize(1004, 728);
-      size(1000, 700);
-      stroke(100, 255, 0);
-      font1 = createFont("Consolas", 14, true);
-      pageNum = 2;
+      launch();
     }
 
     if (mouseX >= 190 && mouseX <= 210 && mouseY >= 85 && mouseY <= 105) {  // Checks '+' button

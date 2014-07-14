@@ -1,3 +1,6 @@
+import procontroll.*;
+import net.java.games.input.*;
+
 //main procedure
 
 import processing.serial.*;
@@ -70,6 +73,15 @@ float satillitesGPS;
 
 Serial serialPort;
 
+ControllIO controller;
+ControllDevice device;
+ControllStick leftStick;
+ControllStick rightStick;
+ControllStick leftTrigger;
+ControllStick rightTrigger;
+ControllButton aButton;
+ControllButton bButton;
+
 void setup() {
   heading2 = 0; //temporary
 
@@ -129,7 +141,12 @@ void mainPage() {
 
   serialRecieve();
 
-  throttle = mouseY;
+  if (usingController) {  // Get controller values
+    ailerons = 90 + leftStick.getX();
+    elevator = 90 + leftStick.getY();
+  } else {  // Get mouse values
+    throttle = mouseY;
+  }
 }
 
 void setupPage() {
@@ -173,6 +190,37 @@ void setupPage() {
   text("Use Xbox controller", 50, 125);
   text("Launch", 50, 165);
 }
+
+void launch() {
+  try {
+    String portName = Serial.list()[serialPortNum];
+    serialPort = new Serial(this, portName, 57600);
+    pageNum = 2;
+  }
+  catch (Exception e) {
+    println("Something broke");
+    pageNum = 1;
+    return;
+    // Invalid serial port code
+  }
+  frame.setSize(1004, 728);
+  size(1000, 700);
+  stroke(100, 255, 0);
+  font1 = createFont("Consolas", 14, true);
+
+  if (usingController) {  // Controller setup code
+    controller = ControllIO.getInstance(this);
+    device = controller.getDevice("Controller (XBOX 360 For Windows)");
+    device.setTolerance(0.05f);
+    
+    ControllSlider sliderX = device.getSlider("X Axis");
+    ControllSlider sliderY = device.getSlider("Y Axis");
+    
+    leftStick = new ControllStick(sliderX, sliderY);
+    leftStick.setMultiplier(90f);
+  }
+}
+
 void orbit(float angle) { //temporary code - simulates the glider positions
   angle=radians(angle);
   tempx = 100*cos(angle);
