@@ -10,32 +10,33 @@ void edges() { //add opaque borders around map
   fill(100, 255, 0);
 }
 void displaymap(float x, float y) { //main map procedure
+  stroke(100, 255, 0);
   rect(10, 18, 500, 500); //initial border
   textFont(font1, 12);
   fill(100, 255, 0);
   noFill();
   pushMatrix();
-    translate(-1*syncX, -1*syncY); //translate all events to the current sync position
-    wayPoint(); //drag circle
-    translate(260, 268);
-    checkBoundry(targetWP,15);
-    displayWaypoints(); //self explanatory
-    targetwaypoint(targetWP); //display the target information
-    translate(syncX, syncY);
-    grid();
+  translate(-1*syncX, -1*syncY); //translate all events to the current sync position
+  wayPoint(); //drag circle
+  translate(260, 268);
+  checkBoundry(targetWP, 15);
+  displayWaypoints(); //self explanatory
+  targetwaypoint(targetWP); //display the target information
+  translate(syncX, syncY);
+  grid();
   popMatrix();
   pushMatrix();
-    positioning(x, y);
+  positioning(x, y);
   popMatrix();
 }
 void grid() {
   strokeWeight(1);
   stroke(100, 255, 0, 75);
-  for (int i = -250; i<250;i+=10) {
+  for (int i = -250; i<250; i+=10) {
     i+=10;
     line(i, -250, i, 250);
   }
-  for (int j = -250;j<250;j+=10) {
+  for (int j = -250; j<250; j+=10) {
     j+=10;
     line(-250, j, 250, j);
   }
@@ -77,16 +78,15 @@ void wayPoint() {
 }
 
 void displayWaypoints() {
-  homeWaypoint(homeX,homeY);
-  textAlign(CENTER,CENTER);
-  for (int moo = 0;moo<=waypointcount-1;moo++) {
+  homeWaypoint(homeX, homeY);
+  textAlign(CENTER, CENTER);
+  for (int moo = 0; moo<=waypointcount-1; moo++) {
     if (moo == targetValue) {
-      fill(100, 255, 0,200);
+      fill(100, 255, 0, 200);
       ellipse(waypointX[moo], waypointY[moo], 18, 18);
       fill(0);
       text(moo+1, waypointX[moo], waypointY[moo]);
-    }
-    else {
+    } else {
       noFill();
       ellipse(waypointX[moo], waypointY[moo], 18, 18);
       fill(100, 255, 0);
@@ -100,28 +100,27 @@ void displayWaypoints() {
   }
   textAlign(CENTER);
 }
-void homeWaypoint(float x,float y){
-  ellipse(x,y,18,18);
-  text("H",x,y+4);
+void homeWaypoint(float x, float y) {
+  ellipse(x, y, 18, 18);
+  text("H", x, y+4);
 }
 void targetwaypoint(int target) {
   target-=1;
   targetValue = target;
   strokeWeight(2);
-  stroke(255,0,0,125);
-  if(info){
-  line(gX,gY,homeX,homeY);
-   text(int(round(sqrt(sq(gX-homeX)+sq(gY-homeY)))),(gX+homeX)/2,(gY+homeY)/2);
+  stroke(255, 0, 0, 125);
+  if (info) {
+    line(gX, gY, homeX, homeY);
+    text(int(round(sqrt(sq(gX-homeX)+sq(gY-homeY)))), (gX+homeX)/2, (gY+homeY)/2);
   }
-  stroke(100,255,0,125);
+  stroke(100, 255, 0, 125);
   if ((waypointcount >= target+1)&&(info)) {
     float targX = waypointX[target];
     float targY = waypointY[target];
     if (target>0) {
       pX = waypointX[target-1];
       pY = waypointY[target-1];
-    }
-    else {
+    } else {
       pX = waypointX[target];
       pY = waypointY[target];
     }
@@ -137,8 +136,7 @@ void targetwaypoint(int target) {
     if ((((gX+Xintercept>=pX)&&(gX+Xintercept<=targX))||((gX+Xintercept>=targX)&&(gX+Xintercept<=pX)))&&
       (((gY+Yintercept>=pY)&&(gY+Yintercept<=targY))||((gY+Yintercept>=targY)&&(gY+Yintercept<=pY)))) {
       line(gX, gY, gX+Xintercept, gY+Yintercept);
-    }
-    else {
+    } else {
       Xintercept = d*cos(theta+radians(180));
       Yintercept = d*sin(theta+radians(180));
       line(gX, gY, gX+Xintercept, gY+Yintercept);
@@ -146,11 +144,11 @@ void targetwaypoint(int target) {
     textFont(font1, 12);
     text(int(distance_to_target ), (gX+targX)/2, (gY+targY)/2);
     text(int(distance_to_prev ), (gX+pX)/2, (gY+pY)/2);
-    if(target>0){
-    text(int(round(d)), (2*gX+Xintercept)/2, (2*gY+Yintercept)/2);
+    if (target>0) {
+      text(int(round(d)), (2*gX+Xintercept)/2, (2*gY+Yintercept)/2);
     }
-    fill(255,0,0);
-    text(int(round(sqrt(sq(gX-homeX)+sq(gY-homeY)))),(gX+homeX)/2,(gY+homeY)/2);
+    fill(255, 0, 0);
+    text(int(round(sqrt(sq(gX-homeX)+sq(gY-homeY)))), (gX+homeX)/2, (gY+homeY)/2);
     strokeWeight(1);
   }
   noFill();
@@ -174,12 +172,12 @@ void button(float buttonX, float buttonY, String name, int function) {
 }
 void scaling_button() {
   pushMatrix();
-  translate(0,-50);
+  translate(0, -50);
   rect(530, 200, 25, 25);
   if ((mouseX>=530)&&(mouseX<=555)&&
     (mouseY+50>=200)&&(mouseY+50<=225)) {
-      strokeWeight(2);
-      rect(530, 200, 25, 25);
+    strokeWeight(2);
+    rect(530, 200, 25, 25);
     if (mousePressed) {
       scale+=0.01;
     }
@@ -188,8 +186,8 @@ void scaling_button() {
   rect(530, 230, 25, 25);
   if ((mouseX>=530)&&(mouseX<=555)&&
     (mouseY+50>=230)&&(mouseY+50<=255)) {
-      strokeWeight(2);
-      rect(530, 230, 25, 25);
+    strokeWeight(2);
+    rect(530, 230, 25, 25);
     if (mousePressed) {
       scale-=0.01;
     }
@@ -217,17 +215,18 @@ void buttonFunction(int k) { //value k selects the procedure that the button exe
   }
 }
 
-void checkBoundry(int wp,float rad){
+void checkBoundry(int wp, float rad) {
   wp--;
   noFill();
-  stroke(255,100,0,100);
-  if(targetWP<=waypointcount){
-    ellipse(waypointX[wp],waypointY[wp],rad*2,rad*2);
+  stroke(255, 100, 0, 100);
+  if (targetWP<=waypointcount) {
+    ellipse(waypointX[wp], waypointY[wp], rad*2, rad*2);
   }
-  if(sqrt(sq(waypointX[wp]-gX)+sq(waypointY[wp]-gY))<=rad){
-    if(targetWP<64){
+  if (sqrt(sq(waypointX[wp]-gX)+sq(waypointY[wp]-gY))<=rad) {
+    if (targetWP<64) {
       wp++;
     }
   }
- stroke(100,255,0); 
+  stroke(100, 255, 0);
 }
+

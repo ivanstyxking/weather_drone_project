@@ -61,6 +61,7 @@ void speedo() {
 void compass(int bearing, int compx,int compy, String type) {
   pushMatrix();
   translate(compx,compy);
+  fill(100,255,0);
   text(type,originX,originY+150);
   pushMatrix();
   translate(originX, originY+220);

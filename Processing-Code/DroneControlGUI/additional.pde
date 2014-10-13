@@ -24,6 +24,11 @@ void keyPressed() { //key operations controlling map
       launch();
     }
   }
+  if (key == ESC) {
+    key = 0;
+    saveTable();
+    exit();
+  }
 }
 //Let me just comment here to explain what this procedure does
 void tempDisplay(float temp1, float temp2, int X, int Y) {

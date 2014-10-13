@@ -13,7 +13,7 @@ PFont font1;
 
 int pageNum = 1;
 int serialPortNum = 0;
-boolean usingController = true;
+boolean usingController = false;
 
 int targetValue, heading2; 
 int targetWP = 1;
@@ -26,7 +26,6 @@ int ymouse, xmouse;
 float yval, xval, x, y, yvar, rotation, gX, gY, pX, pY, altSync, homeX, homeY;
 float[] waypointX = new float[64];
 float[] waypointY = new float[64];
-int[] sensors = new int[5];
 
 int waypointcount = 0;
 
@@ -82,10 +81,17 @@ ControllSlider throttleSlider;
 ControllButton aButton;
 ControllButton bButton;
 
+Graph g1 = new Graph(0, 100, 0, 100); // X pos, Y pos, data set, update interval, range1, range2
+Graph g2 = new Graph(1, 600, 950, 1030);
+float[][] data = new float[5][45];
+
+int tableLastChecked = 0;
+
 void setup() {
   heading2 = 0; //temporary
 
   info = false;
+
   homeX = 0;
   homeY = 0;
   syncX = 0;
@@ -94,6 +100,10 @@ void setup() {
   size(350, 300);
   stroke(100, 255, 0);
   font1 = createFont("Consolas", 14, true);
+  tableSetup();
+  g1.posistion(264,545,LEFT,true);
+  g2.posistion(264,545,RIGHT,false);
+  printArray(Serial.list());
 }
 void draw() {
   strokeWeight(1);
@@ -118,7 +128,7 @@ void mainPage() {
   gauge(5, rudder, 1.3, "rud");
   gauge(6, gear, 1.3, "gear");
   tempDisplay(temperatureBMP, temperatureDHT, 660, 200);
-  barometer(pressureMB, 570, 395, 990, 1030);
+  barometer(pressureMB, 570, 395, 960, 1000);
   hygrometer(humidityDHT, width-58, 395, color(0, 255, 255));
   signalStrength(90, 635, 60);
   navball();
@@ -130,6 +140,10 @@ void mainPage() {
   button(635, 240, "home", 3);
   button(530, 240, "info", 4);
   clock();
+  g1.drawExtra(239,535,271,150);
+  g1.update();  // Updates the graph
+  g2.update();
+  tableCheck();  // Checks to see if the table needs updating
   //angle++;
 
   if (millis() - previousMillis >= 20) {
@@ -200,7 +214,7 @@ void launch() {
     pageNum = 2;
   }
   catch (Exception e) {
-    println("Something broke");
+    println("Error - Serial port not found");
     pageNum = 1;
     return;
     // Invalid serial port code
@@ -214,13 +228,13 @@ void launch() {
     controller = ControllIO.getInstance(this);
     device = controller.getDevice("Controller (XBOX 360 For Windows)");
     device.setTolerance(0.05f);
-    
+
     ControllSlider leftSliderX = device.getSlider("X Axis");
     ControllSlider leftSliderY = device.getSlider("Y Axis");
     ControllSlider rightSliderX = device.getSlider("X Rotation");
     ControllSlider rightSliderY = device.getSlider("Y Rotation");
     throttleSlider = device.getSlider("Z Axis");
-    
+
     leftStick = new ControllStick(leftSliderX, leftSliderY);
     rightStick = new ControllStick(rightSliderX, rightSliderY); 
     leftStick.setMultiplier(90f);
